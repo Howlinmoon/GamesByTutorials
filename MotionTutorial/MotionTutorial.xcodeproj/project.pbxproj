@@ -14,6 +14,7 @@
 		96A6CC501BC7C67500B7E769 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96A6CC4E1BC7C67500B7E769 /* Main.storyboard */; };
 		96A6CC521BC7C67500B7E769 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96A6CC511BC7C67500B7E769 /* Assets.xcassets */; };
 		96A6CC551BC7C67500B7E769 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96A6CC531BC7C67500B7E769 /* LaunchScreen.storyboard */; };
+		96A6CC5D1BC7C7CB00B7E769 /* Airplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A6CC5C1BC7C7CB00B7E769 /* Airplane.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		96A6CC511BC7C67500B7E769 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96A6CC541BC7C67500B7E769 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96A6CC561BC7C67500B7E769 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96A6CC5C1BC7C7CB00B7E769 /* Airplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Airplane.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				96A6CC4A1BC7C67400B7E769 /* GameScene.swift */,
 				96A6CC4C1BC7C67500B7E769 /* GameViewController.swift */,
 				96A6CC4E1BC7C67500B7E769 /* Main.storyboard */,
+				96A6CC5C1BC7C7CB00B7E769 /* Airplane.png */,
 				96A6CC511BC7C67500B7E769 /* Assets.xcassets */,
 				96A6CC531BC7C67500B7E769 /* LaunchScreen.storyboard */,
 				96A6CC561BC7C67500B7E769 /* Info.plist */,
@@ -131,6 +134,7 @@
 				96A6CC551BC7C67500B7E769 /* LaunchScreen.storyboard in Resources */,
 				96A6CC521BC7C67500B7E769 /* Assets.xcassets in Resources */,
 				96A6CC501BC7C67500B7E769 /* Main.storyboard in Resources */,
+				96A6CC5D1BC7C7CB00B7E769 /* Airplane.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
