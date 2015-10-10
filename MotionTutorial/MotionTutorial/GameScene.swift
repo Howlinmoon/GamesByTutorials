@@ -73,7 +73,8 @@ class GameScene: SKScene {
             
         } else {
             print("This isn't going to do very much in the simulator, use a real device!\n")
-            self.destX = self.airplane.position.x        }
+            self.destX = self.airplane.position.x
+        }
     
     
     }
