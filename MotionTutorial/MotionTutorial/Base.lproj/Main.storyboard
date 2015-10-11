@@ -20,6 +20,9 @@
                                 <rect key="frame" x="277" y="550" width="46" height="30"/>
                                 <animations/>
                                 <state key="normal" title="RESET"/>
+                                <connections>
+                                    <action selector="resetClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="E3K-13-ipK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>

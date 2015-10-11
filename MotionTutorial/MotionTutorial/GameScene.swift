@@ -19,16 +19,27 @@ class GameScene: SKScene {
     var maxX:CGFloat = 0.0
     var maxY:CGFloat = 0.0
     
+    func resetCoOrds () {
+        self.maxX = frame.size.width
+        self.maxY = frame.size.height
+        self.destX = maxX / 2
+        self.destY = maxY / 2
+        
+        let action = SKAction.moveTo(CGPointMake(self.destX,self.destY),duration: 0)
+        self.airplane.runAction(action)
+        print("Reset to \(self.maxX), \(self.maxY)")
+    }
+    
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
     
         // 1
-        maxX = frame.size.width
-        maxY = frame.size.height
-        print("Maxium X: \(maxX), Maximum Y: \(maxY)\n")
+        self.maxX = frame.size.width
+        self.maxY = frame.size.height
+        print("Maxium X: \(self.maxX), Maximum Y: \(self.maxY)\n")
         airplane = SKSpriteNode(imageNamed: "Airplane")
-        airplane.position = CGPointMake(maxX/2, maxY/2)
+        airplane.position = CGPointMake(self.maxX/2, self.maxY/2)
         self.addChild(airplane)
         
         let airplaneWidth = airplane.size.width
@@ -74,6 +85,7 @@ class GameScene: SKScene {
         } else {
             print("This isn't going to do very much in the simulator, use a real device!\n")
             self.destX = self.airplane.position.x
+            self.destY = self.airplane.position.y
         }
     
     
@@ -88,7 +100,7 @@ class GameScene: SKScene {
         /* Called before each frame is rendered */
         
         
-        let action = SKAction.moveTo(CGPointMake(destX,destY), duration: 1.5)
+        let action = SKAction.moveTo(CGPointMake(self.destX,self.destY), duration: 1.5)
         self.airplane.runAction(action)
     }
 }

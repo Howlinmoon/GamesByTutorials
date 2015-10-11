@@ -10,7 +10,18 @@ import UIKit
 import SpriteKit
 
 class GameViewController: UIViewController {
-
+    var gameScene: GameScene?
+    
+    @IBAction func resetClicked(sender: AnyObject) {
+        //Reset button was clicked
+        print("The Reset button was clicked")
+        // Need to call GameScene.swift resetCoOrds()
+        if let scene = self.gameScene {
+            scene.resetCoOrds()
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +38,7 @@ class GameViewController: UIViewController {
             scene.scaleMode = .AspectFill
             
             skView.presentScene(scene)
+            self.gameScene = scene
         }
     }
 
