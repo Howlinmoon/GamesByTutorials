@@ -9,34 +9,51 @@
 import SpriteKit
 
 class GameScene: SKScene {
+    
+    var myNumber: Int = 10
+    var myString: String?
+    var anotherString: String?
+    var resultString: String = ""
+    
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!";
-        myLabel.fontSize = 45;
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         
-        self.addChild(myLabel)
+        //myString = "Optionals are Fun!"
+        
+        print(myNumber)
+        //print(myString!)
+        
+        if let anotherString = myString {
+            print(anotherString)
+        } else {
+            print("myString must be nil")
+        }
+        
+        resultString = lookupUser("Joe Cool")
+        print("Lookup result for user is: \(resultString)")
+        
+        
     }
     
+    func lookupUser(someUser: String) -> String {
+        print("Currently looking up user: \(someUser)")
+        return "The user was not found"
+    }
+    
+    
+    
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       /* Called when a touch begins */
-        
+       /* Called when a touch begins
         for touch in touches {
-            let location = touch.locationInNode(self)
             
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
+            print(myNumber)
+            print(myString)
+
             
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
             
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
-        }
+        } */
     }
    
     override func update(currentTime: CFTimeInterval) {
