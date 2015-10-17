@@ -8,17 +8,42 @@
 
 import SpriteKit
 
+enum Direction:String {
+    case North = "toward the village"
+    case South = "toward Mordor"
+    case East = "toward Rivendale"
+    case West = "to where the elves are from"
+}
+
+
 class GameScene: SKScene {
     
     var myNumber: Int = 10
     var myString: String?
     var anotherString: String?
     var resultString: String = ""
-    
+    var directionText:String = "You are heading "
+    var currentDirection = Direction.West
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         
+        //print(directionText + Direction.North.rawValue)
+
+        switch ( currentDirection ) {
+        case .North:
+            print(directionText + Direction.North.rawValue)
+        case .South:
+            print(directionText + Direction.South.rawValue)
+        case .West:
+            print(directionText + Direction.West.rawValue)
+        case .East:
+            print(directionText + Direction.East.rawValue)
+            
+        }
+        
+        
+        /*
         //myString = "Optionals are Fun!"
         
         print(myNumber)
@@ -32,7 +57,7 @@ class GameScene: SKScene {
         
         resultString = lookupUser("Joe Cool")
         print("Lookup result for user is: \(resultString)")
-        
+        */
         
     }
     
