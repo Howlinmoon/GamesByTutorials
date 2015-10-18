@@ -8,6 +8,8 @@
 
 import SpriteKit
 
+var myArray:Array = ["Darth Vader", "Luke", "Han", "Leia"]
+
 enum Direction:String {
     case North = "toward the village"
     case South = "toward Mordor"
@@ -28,6 +30,18 @@ class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         
+        // Add a few names
+        myArray.append("Grand Moff Tarken")
+        myArray.append("Yoda")
+        myArray.append("Londo")
+        
+        for name in myArray {
+            print("Current Name: \(name)")
+        }
+        
+        print( myArray[0])
+        
+        /*
         //print(directionText + Direction.North.rawValue)
 
         switch ( currentDirection ) {
@@ -41,6 +55,7 @@ class GameScene: SKScene {
             print(directionText + Direction.East.rawValue)
             
         }
+        */
         
         
         /*
