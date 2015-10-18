@@ -8,6 +8,25 @@
 
 import SpriteKit
 
+var hillDifficulty = ["Haunted Mansion": 1,
+                      "The Castle": 2,
+                      "Thunder Mountain": 40]
+
+
+func lookUpDifficulty(thePlace: String) -> Int {
+    var diff:Int = 0
+    
+    for (key, value) in hillDifficulty {
+        
+        if thePlace == key {
+            diff = value
+        }
+    }
+    
+    return diff
+}
+
+
 var myArray:Array = ["Darth Vader", "Luke", "Han", "Leia"]
 
 enum Direction:String {
@@ -40,6 +59,13 @@ class GameScene: SKScene {
         }
         
         print( myArray[0])
+        
+        hillDifficulty["Buzz Ride"] = 2
+
+        let rideName = "Buzz Ride"
+        let theDifficulty = lookUpDifficulty("Buzz Ride")
+        print("\(rideName)'s difficulty is: \(theDifficulty)")
+        
         
         /*
         //print(directionText + Direction.North.rawValue)
