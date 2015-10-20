@@ -49,6 +49,11 @@ class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         
+        
+        
+        
+        
+        
         // Add a few names
         myArray.append("Grand Moff Tarken")
         myArray.append("Yoda")
