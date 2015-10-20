@@ -11,11 +11,25 @@ import UIKit
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var objects = [AnyObject]()
+    var objects = [String]()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let fm = NSFileManager.defaultManager()
+        let path = NSBundle.mainBundle().resourcePath!
+        // this really needs to be broken down better
+        let items = try! fm.contentsOfDirectoryAtPath(path)
+        
+        for item in items {
+            if item.hasPrefix("nssl") {
+                objects.append(item)
+            }
+        }
+        
+        print("objects now contains \(objects.count) pictures")
+        
      }
 
     override func viewWillAppear(animated: Bool) {
@@ -54,6 +68,8 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         let object = objects[indexPath.row]
         cell.textLabel!.text = object
         return cell
