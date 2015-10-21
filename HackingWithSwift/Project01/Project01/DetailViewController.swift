@@ -13,7 +13,6 @@ class DetailViewController: UIViewController {
    
     @IBOutlet weak var detailImageView: UIImageView!
 
-
     var detailItem: String? {
         // property observer
         didSet {
@@ -35,6 +34,19 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
+    }
+    
+
+    // hide the navigation bar prior to showing the picture
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.hidesBarsOnTap = true
+    }
+
+    // restore the navigation bar when returning
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.hidesBarsOnTap = false
     }
 
     override func didReceiveMemoryWarning() {
