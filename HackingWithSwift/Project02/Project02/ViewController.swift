@@ -70,20 +70,30 @@ countries = ["estonia", "france", "germany", "ireland", "italy", "monaco", "nige
         }
         
         // Create an alert with the current score
-        
+
         // Modified the original code to use an example from udemy
         let ac = UIAlertController(title: title, message: "Your score is \(score).", preferredStyle: UIAlertControllerStyle.Alert)
         
-        ac.addAction((UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+        ac.addAction((UIAlertAction(title: title, style: .Default, handler: { (action) -> Void in
             self.dismissViewControllerAnimated(true, completion: nil)
+            self.askQuestion()
             
         })))
         
         self.presentViewController(ac, animated: true, completion: nil)
+
+        /*
+        original code
+        let ac = UIAlertController(title: title, message: "Your score is \(score).", preferredStyle: .Alert)
         
+        ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: askQuestion))
+        
+        presentViewController(ac, animated: true, completion: nil)
+        */
     }
     
     
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
