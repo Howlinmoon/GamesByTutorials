@@ -57,6 +57,28 @@ countries = ["estonia", "france", "germany", "ireland", "italy", "monaco", "nige
         
     }
     
+    
+    @IBAction func buttonTapped(sender: AnyObject) {
+    
+        var title: String
+        if sender.tag == correctAnswer {
+            title = "Correct"
+            score++
+        } else {
+            title = "WRONG!"
+            score--
+        }
+        
+        // Create an alert with the current score
+        let ac = UIAlertController(title: title, message: "Your score is \(score).", preferredStyle: .Alert)
+        ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: askQuestion))
+        // Display it
+        presentViewController(ac, animated: true, completion: nil)
+        
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
