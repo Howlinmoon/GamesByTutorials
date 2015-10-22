@@ -26,6 +26,19 @@ class ViewController: UIViewController {
 countries = ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
         
         askQuestion()
+        
+        // give the buttons a border
+        button1.layer.borderWidth = 1
+        button2.layer.borderWidth = 1
+        button3.layer.borderWidth = 1
+        
+        // change the border color to gray
+        // .CGColor 'casts' the resulting UIColor into a CGColor...
+        button1.layer.borderColor = UIColor.lightGrayColor().CGColor
+        button2.layer.borderColor = UIColor.lightGrayColor().CGColor
+        button3.layer.borderColor = UIColor.lightGrayColor().CGColor
+        
+        
     }
 
     func askQuestion() {
