@@ -6,6 +6,7 @@
 //  Copyright © 2015 Jim Veneskey. All rights reserved.
 //
 
+import GameplayKit
 import UIKit
 
 class ViewController: UIViewController {
@@ -16,7 +17,7 @@ class ViewController: UIViewController {
     
     var countries = [String]()
     var score = 0
-    
+    var correctAnswer = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +43,18 @@ countries = ["estonia", "france", "germany", "ireland", "italy", "monaco", "nige
     }
 
     func askQuestion() {
+        // re-shuffle the array prior to selecting the first, second and third entries.
+        countries = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(countries) as! [String]
+        // we are always selecting the first, second and third entries - but the source has been
+        // randomized, so the values we get are actually at random...
         button1.setImage(UIImage(named: countries[0]), forState: .Normal)
         button2.setImage(UIImage(named: countries[1]), forState: .Normal)
         button3.setImage(UIImage(named: countries[2]), forState: .Normal)
+        // Select which is the 'correct' flag (randomizes 0, 1 or 2)
+        correctAnswer = GKRandomSource.sharedRandom().nextIntWithUpperBound(3)
+        // Set our current title to the name of the correct flag's country
+        title = countries[correctAnswer].uppercaseString
+        
     }
     
     override func didReceiveMemoryWarning() {
