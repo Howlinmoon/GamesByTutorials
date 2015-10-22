@@ -70,10 +70,16 @@ countries = ["estonia", "france", "germany", "ireland", "italy", "monaco", "nige
         }
         
         // Create an alert with the current score
-        let ac = UIAlertController(title: title, message: "Your score is \(score).", preferredStyle: .Alert)
-        ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: askQuestion))
-        // Display it
-        presentViewController(ac, animated: true, completion: nil)
+        
+        // Modified the original code to use an example from udemy
+        let ac = UIAlertController(title: title, message: "Your score is \(score).", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        ac.addAction((UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            self.dismissViewControllerAnimated(true, completion: nil)
+            
+        })))
+        
+        self.presentViewController(ac, animated: true, completion: nil)
         
     }
     
