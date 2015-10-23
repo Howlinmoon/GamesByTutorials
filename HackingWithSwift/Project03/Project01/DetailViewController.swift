@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Social
 
 class DetailViewController: UIViewController {
 
@@ -55,8 +56,21 @@ class DetailViewController: UIViewController {
     
     func shareTapped() {
         print("You clicked on the right bar button item")
+        
+        /* original code
+        
         let vc = UIActivityViewController(activityItems: [detailImageView.image!], applicationActivities: [])
         presentViewController(vc, animated: true, completion: nil)
+
+        */
+        
+        // Updated share code for Facebook
+        let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+        vc.setInitialText("Look at this great picture!")
+        vc.addImage(detailImageView.image!)
+        vc.addURL(NSURL(string: "http://www.photolib.noaa.gov/nssl"))
+        presentViewController(vc, animated: true, completion: nil)
+        
     }
 
     override func didReceiveMemoryWarning() {
