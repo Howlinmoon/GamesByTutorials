@@ -12,6 +12,7 @@
 		96D4BB821BDD079900E96A24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96D4BB801BDD079900E96A24 /* Main.storyboard */; };
 		96D4BB841BDD079900E96A24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96D4BB831BDD079900E96A24 /* Assets.xcassets */; };
 		96D4BB871BDD079900E96A24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96D4BB851BDD079900E96A24 /* LaunchScreen.storyboard */; };
+		96D4BB8F1BDD0BA400E96A24 /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = 96D4BB8E1BDD0BA400E96A24 /* start.txt */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		96D4BB831BDD079900E96A24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96D4BB861BDD079900E96A24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96D4BB881BDD079900E96A24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96D4BB8E1BDD0BA400E96A24 /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				96D4BB801BDD079900E96A24 /* Main.storyboard */,
 				96D4BB831BDD079900E96A24 /* Assets.xcassets */,
 				96D4BB851BDD079900E96A24 /* LaunchScreen.storyboard */,
+				96D4BB8E1BDD0BA400E96A24 /* start.txt */,
 				96D4BB881BDD079900E96A24 /* Info.plist */,
 			);
 			path = Project05;
@@ -122,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96D4BB871BDD079900E96A24 /* LaunchScreen.storyboard in Resources */,
+				96D4BB8F1BDD0BA400E96A24 /* start.txt in Resources */,
 				96D4BB841BDD079900E96A24 /* Assets.xcassets in Resources */,
 				96D4BB821BDD079900E96A24 /* Main.storyboard in Resources */,
 			);
