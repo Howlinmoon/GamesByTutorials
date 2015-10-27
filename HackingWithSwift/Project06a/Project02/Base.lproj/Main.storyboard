@@ -2,12 +2,13 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Kq6-nK-jwv">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Project02" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Project06a" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -19,6 +20,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPp-4Q-lER">
                                 <rect key="frame" x="200" y="100" width="200" height="100"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fPp-4Q-lER" secondAttribute="height" multiplier="2:1" id="mbz-fW-Acd"/>
+                                </constraints>
                                 <state key="normal" image="us"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aTa-dU-1Sz"/>
@@ -27,6 +31,9 @@
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3E-j2-atz">
                                 <rect key="frame" x="200" y="360" width="200" height="100"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="R3E-j2-atz" secondAttribute="height" multiplier="2:1" id="fOP-Us-0V6"/>
+                                </constraints>
                                 <state key="normal" image="us"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GGN-qF-aJJ"/>
@@ -35,6 +42,9 @@
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S0e-lN-Cmd">
                                 <rect key="frame" x="200" y="230" width="200" height="100"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="S0e-lN-Cmd" secondAttribute="height" multiplier="2:1" id="SsN-s2-uNw"/>
+                                </constraints>
                                 <state key="normal" image="us"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6y1-x6-bVA"/>
@@ -45,10 +55,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="R3E-j2-atz" firstAttribute="top" secondItem="S0e-lN-Cmd" secondAttribute="bottom" constant="30" id="3NU-Wn-V9T"/>
+                            <constraint firstItem="S0e-lN-Cmd" firstAttribute="height" secondItem="fPp-4Q-lER" secondAttribute="height" id="3wE-s9-ZNC"/>
                             <constraint firstItem="fPp-4Q-lER" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="36" id="E5J-fe-a9o"/>
                             <constraint firstItem="fPp-4Q-lER" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hh2-hY-6WI"/>
                             <constraint firstItem="R3E-j2-atz" firstAttribute="centerX" secondItem="S0e-lN-Cmd" secondAttribute="centerX" id="V1i-x0-Fqc"/>
                             <constraint firstItem="S0e-lN-Cmd" firstAttribute="top" secondItem="fPp-4Q-lER" secondAttribute="bottom" constant="30" id="YIB-bF-UI0"/>
+                            <constraint firstItem="R3E-j2-atz" firstAttribute="height" secondItem="S0e-lN-Cmd" secondAttribute="height" id="du8-II-xuQ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="R3E-j2-atz" secondAttribute="bottom" constant="20" id="egw-p3-G4X"/>
                             <constraint firstItem="S0e-lN-Cmd" firstAttribute="centerX" secondItem="fPp-4Q-lER" secondAttribute="centerX" id="mND-vC-6Uh"/>
                         </constraints>
                     </view>

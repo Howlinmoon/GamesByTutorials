@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		96EBE2351BD7F6C000F3205D /* Project02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project02.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		96EBE2351BD7F6C000F3205D /* Project06a.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project06a.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96EBE2381BD7F6C000F3205D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96EBE23A1BD7F6C000F3205D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		96EBE23D1BD7F6C000F3205D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 		96EBE2361BD7F6C000F3205D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				96EBE2351BD7F6C000F3205D /* Project02.app */,
+				96EBE2351BD7F6C000F3205D /* Project06a.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,9 +67,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		96EBE2341BD7F6C000F3205D /* Project02 */ = {
+		96EBE2341BD7F6C000F3205D /* Project06a */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 96EBE2471BD7F6C000F3205D /* Build configuration list for PBXNativeTarget "Project02" */;
+			buildConfigurationList = 96EBE2471BD7F6C000F3205D /* Build configuration list for PBXNativeTarget "Project06a" */;
 			buildPhases = (
 				96EBE2311BD7F6C000F3205D /* Sources */,
 				96EBE2321BD7F6C000F3205D /* Frameworks */,
@@ -79,9 +79,9 @@
 			);
 			dependencies = (
 			);
-			name = Project02;
+			name = Project06a;
 			productName = Project02;
-			productReference = 96EBE2351BD7F6C000F3205D /* Project02.app */;
+			productReference = 96EBE2351BD7F6C000F3205D /* Project06a.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -98,7 +98,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 96EBE2301BD7F6C000F3205D /* Build configuration list for PBXProject "Project02" */;
+			buildConfigurationList = 96EBE2301BD7F6C000F3205D /* Build configuration list for PBXProject "Project06a" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -111,7 +111,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				96EBE2341BD7F6C000F3205D /* Project02 */,
+				96EBE2341BD7F6C000F3205D /* Project06a */,
 			);
 		};
 /* End PBXProject section */
@@ -249,7 +249,7 @@
 				INFOPLIST_FILE = Project02/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.strifecrafter.Project02;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Project06a;
 			};
 			name = Debug;
 		};
@@ -260,14 +260,14 @@
 				INFOPLIST_FILE = Project02/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.strifecrafter.Project02;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Project06a;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		96EBE2301BD7F6C000F3205D /* Build configuration list for PBXProject "Project02" */ = {
+		96EBE2301BD7F6C000F3205D /* Build configuration list for PBXProject "Project06a" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				96EBE2451BD7F6C000F3205D /* Debug */,
@@ -276,13 +276,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		96EBE2471BD7F6C000F3205D /* Build configuration list for PBXNativeTarget "Project02" */ = {
+		96EBE2471BD7F6C000F3205D /* Build configuration list for PBXNativeTarget "Project06a" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				96EBE2481BD7F6C000F3205D /* Debug */,
 				96EBE2491BD7F6C000F3205D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
