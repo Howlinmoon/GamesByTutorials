@@ -3,7 +3,7 @@
 Starting the Tutorial Series - Hacking With Swift
 
 Continue here:
-https://www.hackingwithswift.com/read/6/3/auto-layout-in-code-addconstraints
+https://www.hackingwithswift.com/read/6/4/auto-layout-metrics-and-priorities-constraintswithvisualformat
 
 Project 6b
 
