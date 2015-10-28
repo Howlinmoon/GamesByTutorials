@@ -69,17 +69,20 @@ class ViewController: UIViewController {
         
         /* Default vertical constraint spacing
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[label1]-[label2]-[label3]-[label4]-[label5]", options: [], metrics: nil, views: viewsDictionary))
-        */
-
-        /* overriding the default vertical constraint spacing
+        
+        //overriding the default vertical constraint spacing
         // 88 pix height per label, min 10 pix at the bottom
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[label1(==88)]-[label2(==88)]-[label3(==88)]-[label4(==88)]-[label5(==88)]-(>=10)-|", options: [], metrics: nil, views: viewsDictionary))
-        */
-        
+
         
         // using the metrics dictionary to make resizing easier
-        let metrics = ["labelHeight": 55]
+        let metrics = ["labelHeight": 88]
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[label1(labelHeight)]-[label2(labelHeight)]-[label3(labelHeight)]-[label4(labelHeight)]-[label5(labelHeight)]->=10-|", options: [], metrics: metrics, views: viewsDictionary))
+        */
+
+        // Finally - adding priorities to allow auto-resizing in landscape mode
+        let metrics = ["labelHeight": 88]
+         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[label1(labelHeight@999)]-[label2(label1)]-[label3(label1)]-[label4(label1)]-[label5(label1)]->=10-|", options: [], metrics: metrics, views: viewsDictionary))
         
     }
 
