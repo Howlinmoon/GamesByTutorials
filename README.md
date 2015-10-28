@@ -3,8 +3,8 @@
 Starting the Tutorial Series - Hacking With Swift
 
 Continue here:
-https://www.hackingwithswift.com/read/6/4/auto-layout-metrics-and-priorities-constraintswithvisualformat
+https://www.hackingwithswift.com/read/7/3/parsing-json-nsdata-and-swiftyjson
 
-Project 6b
+Project 7
 
 
