@@ -18,7 +18,14 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let urlString = "https://api.whitehouse.gov/v1/petitions.json?limit=100"
+        let urlString: String
+        if navigationController?.tabBarItem.tag == 0 {
+            // default selection
+            urlString = "https://api.whitehouse.gov/v1/petitions.json?limit=100"
+        } else {
+            // top rated selection
+            urlString = "https://api.whitehouse.gov/v1/petitions.json?signatureCountFloor=10000&limit=100"
+        }
         
         if let url = NSURL(string: urlString) {
             if let data = try? NSData(contentsOfURL: url, options: []) {
@@ -27,8 +34,14 @@ class MasterViewController: UITableViewController {
                 if json["metadata"]["responseInfo"]["status"].intValue == 200 {
                     print("Data received, OK to parse")
                     parseJSON(json)
+                } else {
+                    showError()
                 }
+            } else {
+                showError()
             }
+        } else {
+            showError()
         }
     }
 
@@ -43,6 +56,14 @@ class MasterViewController: UITableViewController {
         }
         
         tableView.reloadData()
+    }
+    
+    
+    // Generic error handler
+    func showError() {
+        let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .Alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        presentViewController(ac, animated: true, completion: nil)
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -24,6 +24,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // end of possible comment out block
         
         splitViewController.delegate = self
+        
+        let tabBarController = splitViewController.viewControllers[0] as! UITabBarController
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let vc = storyboard.instantiateViewControllerWithIdentifier("NavController") as! UINavigationController
+        
+        vc.tabBarItem = UITabBarItem(tabBarSystemItem: .TopRated, tag: 1)
+        
+        tabBarController.viewControllers?.append(vc)
+        
+        
+        
         return true
     }
 
