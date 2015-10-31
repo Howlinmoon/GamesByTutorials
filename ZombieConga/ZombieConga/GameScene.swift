@@ -8,12 +8,19 @@
 
 import SpriteKit
 class GameScene: SKScene {
+
+    let background = SKSpriteNode(imageNamed: "background1")
+    let zombie = SKSpriteNode(imageNamed: "zombie1")
     
+    // Used for computing update time intervals
+    var lastUpdateTime: NSTimeInterval = 0
+    var dt: NSTimeInterval = 0
+    let zombieMovePointsPerSec: CGFloat = 480.0
+    var velocity = CGPoint.zero
+
     override func didMoveToView(view: SKView) {
     backgroundColor = SKColor.blackColor()
     
-    let background = SKSpriteNode(imageNamed: "background1")
-    let zombie = SKSpriteNode(imageNamed: "zombie1")
     
     // method #1 of setting the postion of the background image
     // background.position = CGPoint(x: size.width/2, y: size.height/2)
@@ -36,7 +43,7 @@ class GameScene: SKScene {
     zombie.position = CGPoint(x: 400, y: 400)
     
     // Zoom the zombie by 2x
-    zombie.setScale(2.0)
+    // zombie.setScale(2.0)
     
     addChild(background)
     addChild(zombie)
@@ -46,4 +53,34 @@ class GameScene: SKScene {
     print("Size is \(mySize)")
     
     }
+    
+    // Experiment with moving the zombie
+    override func update(currentTime: NSTimeInterval) {
+        
+        if lastUpdateTime > 0 {
+            dt = currentTime - lastUpdateTime
+        } else {
+            dt = 0
+        }
+        
+        lastUpdateTime = currentTime
+        print("\(dt * 1000) milliseconds since last update")
+        
+        // old hardcoded mover
+        // zombie.position = CGPoint(x: zombie.position.x + 8, y: zombie.position.y)
+        
+        // new time sensitive mover
+        moveSprite(zombie, velocity: CGPoint(x: zombieMovePointsPerSec, y: 0))
+    }
+    
+    func moveSprite(sprite: SKSpriteNode, velocity: CGPoint) {
+        // 1
+        let amountToMove = CGPoint(x: velocity.x * CGFloat(dt), y: velocity.y * CGFloat(dt))
+        
+        print("Amount to move: \(amountToMove)")
+        
+        //2
+        sprite.position = CGPoint(x: sprite.position.x + amountToMove.x, y: sprite.position.y + amountToMove.y)
+    }
+    
 }
