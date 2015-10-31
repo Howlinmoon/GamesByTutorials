@@ -74,6 +74,7 @@ class GameScene: SKScene {
         
         // chase the taps
         moveSprite(zombie, velocity: velocity)
+        boundsCheckZombie()
     }
     
     func moveSprite(sprite: SKSpriteNode, velocity: CGPoint) {
@@ -114,6 +115,32 @@ class GameScene: SKScene {
         
         let touchLocation = touch.locationInNode(self)
         sceneTouched(touchLocation)
+    }
+    
+    func boundsCheckZombie() {
+        let bottomLeft = CGPointZero
+        let topRight = CGPoint(x: size.width, y: size.height)
+        
+        if zombie.position.x <= bottomLeft.x {
+            zombie.position.x = bottomLeft.x
+            velocity.x = -velocity.x
+        }
+        
+        if zombie.position.x >= topRight.x {
+            zombie.position.x = topRight.x
+            velocity.x = -velocity.x
+        }
+
+        if zombie.position.y <= bottomLeft.y {
+            zombie.position.y = bottomLeft.y
+            velocity.y = -velocity.y
+        }
+        
+        if zombie.position.y >= topRight.y {
+            zombie.position.y = topRight.y
+            velocity.y = -velocity.y
+        }
+        
     }
     
     
