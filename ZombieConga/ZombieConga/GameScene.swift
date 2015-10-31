@@ -70,7 +70,10 @@ class GameScene: SKScene {
         // zombie.position = CGPoint(x: zombie.position.x + 8, y: zombie.position.y)
         
         // new time sensitive mover
-        moveSprite(zombie, velocity: CGPoint(x: zombieMovePointsPerSec, y: 0))
+        // moveSprite(zombie, velocity: CGPoint(x: zombieMovePointsPerSec, y: 0))
+        
+        // chase the taps
+        moveSprite(zombie, velocity: velocity)
     }
     
     func moveSprite(sprite: SKSpriteNode, velocity: CGPoint) {
@@ -82,5 +85,36 @@ class GameScene: SKScene {
         //2
         sprite.position = CGPoint(x: sprite.position.x + amountToMove.x, y: sprite.position.y + amountToMove.y)
     }
+    
+    // Move the zombie towards the current touch position
+    func moveZombieToward(location: CGPoint) {
+        let offset = CGPoint(x:location.x - zombie.position.x, y:location.y - zombie.position.y)
+        let length = sqrt(Double(offset.x * offset.x + offset.y * offset.y))
+        let direction = CGPoint(x: offset.x / CGFloat(length), y: offset.y / CGFloat(length))
+        velocity = CGPoint(x: direction.x * zombieMovePointsPerSec, y: direction.y * zombieMovePointsPerSec)
+    }
+    
+    func sceneTouched(touchLocation: CGPoint) {
+        moveZombieToward(touchLocation)
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+        
+        let touchLocation = touch.locationInNode(self)
+        sceneTouched(touchLocation)
+    }
+
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+        
+        let touchLocation = touch.locationInNode(self)
+        sceneTouched(touchLocation)
+    }
+    
     
 }
