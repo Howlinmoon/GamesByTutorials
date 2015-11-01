@@ -81,6 +81,7 @@ class GameScene: SKScene {
         // chase the taps
         moveSprite(zombie, velocity: velocity)
         boundsCheckZombie()
+        rotateSprite(zombie, direction: velocity)
     }
     
     func moveSprite(sprite: SKSpriteNode, velocity: CGPoint) {
@@ -178,6 +179,11 @@ class GameScene: SKScene {
         shape.strokeColor = SKColor.redColor()
         shape.lineWidth = 4.0
         addChild(shape)
+    }
+    
+    // Adjust the facing of the zombie
+    func rotateSprite(sprite: SKSpriteNode, direction: CGPoint) {
+        sprite.zRotation = CGFloat( atan2(Double(direction.y), Double(direction.x)))
     }
     
    
