@@ -13,6 +13,7 @@
 		968239E61BE2805000417CC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 968239E41BE2805000417CC8 /* Main.storyboard */; };
 		968239E81BE2805000417CC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 968239E71BE2805000417CC8 /* Assets.xcassets */; };
 		968239EB1BE2805000417CC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 968239E91BE2805000417CC8 /* LaunchScreen.storyboard */; };
+		968AC46E1BE65B87002E2E85 /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968AC46D1BE65B87002E2E85 /* MyUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		968239E71BE2805000417CC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		968239EA1BE2805000417CC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		968239EC1BE2805000417CC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		968AC46D1BE65B87002E2E85 /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				968239DC1BE2805000417CC8 /* AppDelegate.swift */,
 				968239E01BE2805000417CC8 /* GameScene.swift */,
+				968AC46D1BE65B87002E2E85 /* MyUtils.swift */,
 				968239E21BE2805000417CC8 /* GameViewController.swift */,
 				968239E41BE2805000417CC8 /* Main.storyboard */,
 				968239E71BE2805000417CC8 /* Assets.xcassets */,
@@ -142,6 +145,7 @@
 				968239E11BE2805000417CC8 /* GameScene.swift in Sources */,
 				968239E31BE2805000417CC8 /* GameViewController.swift in Sources */,
 				968239DD1BE2805000417CC8 /* AppDelegate.swift in Sources */,
+				968AC46E1BE65B87002E2E85 /* MyUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
