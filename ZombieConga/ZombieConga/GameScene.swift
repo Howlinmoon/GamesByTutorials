@@ -74,9 +74,15 @@ class GameScene: SKScene {
         addChild(enemy)
         
         // Setup the actions that move the enemy
+        /* old - non-reversable
         let actionMidMove = SKAction.moveTo(CGPoint(x: size.width/2, y: CGRectGetMinY(playableRect) + enemy.size.height/2), duration: 1.0)
-        
         let actionMove = SKAction.moveTo( CGPoint(x: -enemy.size.width/2, y: enemy.position.y), duration: 1.0)
+        */
+        
+        // New - reversable actions
+        let actionMidMove = SKAction.moveByX(-size.width/2 - enemy.size.width/2, y: -CGRectGetHeight(playableRect)/2 + enemy.size.height/2, duration: 1.0 )
+        
+        let actionMove = SKAction.moveByX(-size.width/2 - enemy.size.width/2, y: CGRectGetHeight(playableRect)/2 - enemy.size.height/2, duration: 1.0)
         
         // Add a small pause
         let wait = SKAction.waitForDuration(0.5)
@@ -88,11 +94,28 @@ class GameScene: SKScene {
         
         // build the sequence made of the above actions
         
-        let sequence = SKAction.sequence([actionMidMove, logMessage, wait, actionMove])
+        /* reversing the hard way
+        let reverseMid = actionMidMove.reversedAction()
+        let reverseMove = actionMove.reversedAction()
+        let sequence = SKAction.sequence([
+            actionMidMove, logMessage, wait, actionMove,
+            reverseMove, logMessage, wait, reverseMid
+            ])
+        */
         
+        // reversing the easy way
+        let halfSequence = SKAction.sequence(
+                [actionMidMove, logMessage, wait, actionMove]
+        )
+        // Build our sequence from the forward and reversed version of the above
+        let sequence = SKAction.sequence(
+                [halfSequence, halfSequence.reversedAction()]
+        )
         // Run it
         print("Above Run Action")
-        enemy.runAction(sequence)
+        //endlessly repeat
+        let repeatAction = SKAction.repeatActionForever(sequence)
+        enemy.runAction(repeatAction)
         print("Below Run Action")
     }
     
