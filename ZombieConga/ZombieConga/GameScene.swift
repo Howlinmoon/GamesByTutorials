@@ -73,8 +73,27 @@ class GameScene: SKScene {
         // add it to the scene
         addChild(enemy)
         
-        let actionMove = SKAction.moveTo( CGPoint(x: -enemy.size.width/2, y: enemy.position.y), duration: 2.0)
-        enemy.runAction(actionMove)
+        // Setup the actions that move the enemy
+        let actionMidMove = SKAction.moveTo(CGPoint(x: size.width/2, y: CGRectGetMinY(playableRect) + enemy.size.height/2), duration: 1.0)
+        
+        let actionMove = SKAction.moveTo( CGPoint(x: -enemy.size.width/2, y: enemy.position.y), duration: 1.0)
+        
+        // Add a small pause
+        let wait = SKAction.waitForDuration(0.5)
+        
+        // Add a Log Message
+        let logMessage = SKAction.runBlock() {
+            print("Reached the bottom!")
+        }
+        
+        // build the sequence made of the above actions
+        
+        let sequence = SKAction.sequence([actionMidMove, logMessage, wait, actionMove])
+        
+        // Run it
+        print("Above Run Action")
+        enemy.runAction(sequence)
+        print("Below Run Action")
     }
     
     // Experiment with moving the zombie
@@ -86,7 +105,7 @@ class GameScene: SKScene {
             dt = 0
         }
         lastUpdateTime = currentTime
-        print("\(dt*1000) milliseconds since last update")
+        //print("\(dt*1000) milliseconds since last update")
         
         if let lastTouchLocation = lastTouchLocation {
             let diff = lastTouchLocation - zombie.position
