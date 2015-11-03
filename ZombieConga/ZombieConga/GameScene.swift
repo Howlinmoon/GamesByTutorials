@@ -11,6 +11,7 @@ class GameScene: SKScene {
 
     let background = SKSpriteNode(imageNamed: "background1")
     let zombie = SKSpriteNode(imageNamed: "zombie1")
+    let zombieAnimation: SKAction
     
     // Used for computing update time intervals
     var lastUpdateTime: NSTimeInterval = 0
@@ -55,7 +56,8 @@ class GameScene: SKScene {
     
         addChild(background)
         addChild(zombie)
-        spawnEnemy()
+        //zombie.runAction(SKAction.repeatActionForever(zombieAnimation))
+        runAction(SKAction.repeatActionForever(SKAction.sequence([SKAction.runBlock(spawnEnemy),SKAction.waitForDuration(2.0)])))
     
         // How big is our background sprite?
         let mySize = background.size
@@ -64,8 +66,8 @@ class GameScene: SKScene {
         debugDrawPlayableArea()
     }
     
-    
-    func spawnEnemy() {
+    // Original Enemy spawner for historical purposes
+    func spawnEnemy_OLD() {
         let enemy = SKSpriteNode(imageNamed: "enemy")
         // enemy initial starting position is half a width off the screen
         enemy.position = CGPoint(x: size.width + enemy.size.width/2, y: size.height/2)
@@ -119,6 +121,20 @@ class GameScene: SKScene {
         print("Below Run Action")
     }
     
+    func spawnEnemy() {
+        let enemy = SKSpriteNode(imageNamed: "enemy")
+        enemy.position = CGPoint(
+            x: size.width + enemy.size.width/2,
+            y: CGFloat.random(
+            min: CGRectGetMinY(playableRect) + enemy.size.height/2,
+            max: CGRectGetMaxY(playableRect) - enemy.size.height/2))
+        addChild(enemy)
+        // spawn the enemy - but remove old ones also
+        let actionMove = SKAction.moveToX(-enemy.size.width/2, duration: 2.0)
+        let actionRemove = SKAction.removeFromParent()
+        enemy.runAction(SKAction.sequence([actionMove, actionRemove]))
+    }
+    
     // Experiment with moving the zombie
     override func update(currentTime: NSTimeInterval) {
         
@@ -135,6 +151,7 @@ class GameScene: SKScene {
             if (diff.length() <= zombieMovePointsPerSec * CGFloat(dt)) {
                 zombie.position = lastTouchLocation
                 velocity = CGPointZero
+                stopZombieAnimation()
             } else {
                 moveSprite(zombie, velocity: velocity)
                 rotateSprite(zombie, direction: velocity, rotateRadiansPerSec: zombieRotateRadiansPerSec)
@@ -163,6 +180,7 @@ class GameScene: SKScene {
     
     // Move the zombie towards the current touch position
     func moveZombieToward(location: CGPoint) {
+        startZombieAnimation()
         let offset = location - zombie.position
         let direction = offset.normalized()
         velocity = direction * zombieMovePointsPerSec
@@ -229,6 +247,18 @@ class GameScene: SKScene {
         let playableMargin = (size.height - playableHeight) / 2.0 //3
         print("playableHeight = \(playableHeight), playableMargin = \(playableMargin)")
         playableRect = CGRect(x: 0, y: playableMargin, width: size.width, height: playableHeight) //4
+        // 1
+        var textures:[SKTexture] = []
+        // 2
+        for i in 1...4 {
+            textures.append(SKTexture(imageNamed: "zombie\(i)"))
+        }
+        // 3
+        textures.append(textures[2])
+        textures.append(textures[1])
+        // 4
+        zombieAnimation = SKAction.animateWithTextures(textures,
+        timePerFrame: 0.1)
         
         super.init(size: size) // 5
     }
@@ -255,6 +285,17 @@ class GameScene: SKScene {
             let shortest = shortestAngleBetween(sprite.zRotation, angle2: velocity.angle)
             let amountToRotate = min(rotateRadiansPerSec * CGFloat(dt), abs(shortest))
             sprite.zRotation += shortest.sign() * amountToRotate
+    }
+    
+    // stop and start the zombie animation frames
+    func startZombieAnimation() {
+        if zombie.actionForKey("animation") == nil {
+            zombie.runAction(SKAction.repeatActionForever(zombieAnimation),withKey: "animation")
+        }
+    }
+    
+    func stopZombieAnimation() {
+        zombie.removeActionForKey("animation")
     }
     
 }
