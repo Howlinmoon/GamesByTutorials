@@ -56,8 +56,16 @@ class GameScene: SKScene {
     
         addChild(background)
         addChild(zombie)
-        //zombie.runAction(SKAction.repeatActionForever(zombieAnimation))
-        runAction(SKAction.repeatActionForever(SKAction.sequence([SKAction.runBlock(spawnEnemy),SKAction.waitForDuration(2.0)])))
+        
+        // Spawn the Crazy Cat Lady
+        runAction(SKAction.repeatActionForever(
+            SKAction.sequence([SKAction.runBlock(spawnEnemy),
+                SKAction.waitForDuration(2.0)])))
+        
+        // Spawn the cats!
+        runAction(SKAction.repeatActionForever(
+        SKAction.sequence([SKAction.runBlock(spawnCat),
+        SKAction.waitForDuration(1.0)])))
     
         // How big is our background sprite?
         let mySize = background.size
@@ -124,6 +132,7 @@ class GameScene: SKScene {
     // Spawn the Crazy Cat Lady
     func spawnEnemy() {
         let enemy = SKSpriteNode(imageNamed: "enemy")
+        enemy.name = "enemy"
         enemy.position = CGPoint(
             x: size.width + enemy.size.width/2,
             y: CGFloat.random(
@@ -140,6 +149,7 @@ class GameScene: SKScene {
     func spawnCat() {
         // 1
         let cat = SKSpriteNode(imageNamed: "cat")
+        cat.name = "cat"
         // randomize the starting location to anywhere in the playable area
         cat.position = CGPoint(
             x: CGFloat.random(min: CGRectGetMinX(playableRect),
@@ -154,11 +164,27 @@ class GameScene: SKScene {
         // 2
         // Create our actions
         let appear = SKAction.scaleTo(1.0, duration: 0.5)
-        let wait = SKAction.waitForDuration(10.0)
+        
+        // Create a delay action - wiggling
+        cat.zRotation = -π / 16.0
+        let leftWiggle = SKAction.rotateByAngle(π/8.0, duration: 0.5)
+        let rightWiggle = leftWiggle.reversedAction()
+        let fullWiggle = SKAction.sequence([leftWiggle, rightWiggle])
+        //let wiggleWait = SKAction.repeatAction(fullWiggle, count: 10)
+        
+        // adding another type of delay action - scaling while wiggling
+        let scaleUp = SKAction.scaleBy(1.2, duration: 0.25)
+        let scaleDown = scaleUp.reversedAction()
+        let fullScale = SKAction.sequence(
+            [scaleUp, scaleDown, scaleUp, scaleDown])
+        let group = SKAction.group([fullScale, fullWiggle])
+        let groupWait = SKAction.repeatAction(group, count: 10)
+        
         let disappear = SKAction.scaleTo(0, duration: 0.5)
         let removeFromParent = SKAction.removeFromParent()
         // create the sequence that holds them
-        let actions = [appear, wait, disappear, removeFromParent]
+        // let actions = [appear, wiggleWait, disappear, removeFromParent]
+        let actions = [appear, groupWait, disappear, removeFromParent]
         cat.runAction(SKAction.sequence(actions))
     }
     
@@ -265,6 +291,7 @@ class GameScene: SKScene {
         }
         
     }
+    
     
     
     // game size initializer
