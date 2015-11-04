@@ -121,6 +121,7 @@ class GameScene: SKScene {
         print("Below Run Action")
     }
     
+    // Spawn the Crazy Cat Lady
     func spawnEnemy() {
         let enemy = SKSpriteNode(imageNamed: "enemy")
         enemy.position = CGPoint(
@@ -133,6 +134,32 @@ class GameScene: SKScene {
         let actionMove = SKAction.moveToX(-enemy.size.width/2, duration: 2.0)
         let actionRemove = SKAction.removeFromParent()
         enemy.runAction(SKAction.sequence([actionMove, actionRemove]))
+    }
+    
+    // Spawn the cats - gradually
+    func spawnCat() {
+        // 1
+        let cat = SKSpriteNode(imageNamed: "cat")
+        // randomize the starting location to anywhere in the playable area
+        cat.position = CGPoint(
+            x: CGFloat.random(min: CGRectGetMinX(playableRect),
+                max: CGRectGetMaxX(playableRect)),
+            y: CGFloat.random(min: CGRectGetMinY(playableRect),
+                max: CGRectGetMaxY(playableRect)))
+        
+        // hide the cat initially
+        cat.setScale(0)
+        addChild(cat)
+        
+        // 2
+        // Create our actions
+        let appear = SKAction.scaleTo(1.0, duration: 0.5)
+        let wait = SKAction.waitForDuration(10.0)
+        let disappear = SKAction.scaleTo(0, duration: 0.5)
+        let removeFromParent = SKAction.removeFromParent()
+        // create the sequence that holds them
+        let actions = [appear, wait, disappear, removeFromParent]
+        cat.runAction(SKAction.sequence(actions))
     }
     
     // Experiment with moving the zombie
