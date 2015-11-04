@@ -302,12 +302,16 @@ class GameScene: SKScene {
     // Collision detection
     // Zombie and cat collide - remove the cat
     func zombieHitCat(cat: SKSpriteNode) {
-            cat.removeFromParent()
+        cat.removeFromParent()
+        // play the appropriate sound effect
+        runAction(SKAction.playSoundFileNamed("hitCat.wav", waitForCompletion: false))
     }
     
     // Zombie and Crazy Cat Lady collide
     func zombieHitEnemy(enemy: SKSpriteNode) {
         enemy.removeFromParent()
+        // play the appropriate sound effect
+        runAction(SKAction.playSoundFileNamed("hitCatLady.wav", waitForCompletion: false))
     }
     
     func checkCollisions() {
