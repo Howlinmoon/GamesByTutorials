@@ -212,6 +212,13 @@ class GameScene: SKScene {
         }
         
         boundsCheckZombie()
+        // wrong place for this
+        //checkCollisions()
+    }
+    
+    // Proper place in the game cycle sequence for collision checking
+    override func didEvaluateActions() {
+            checkCollisions()
     }
     
     func moveSprite(sprite: SKSpriteNode, velocity: CGPoint) {
@@ -290,6 +297,50 @@ class GameScene: SKScene {
             velocity.y = -velocity.y
         }
         
+    }
+    
+    // Collision detection
+    // Zombie and cat collide - remove the cat
+    func zombieHitCat(cat: SKSpriteNode) {
+            cat.removeFromParent()
+    }
+    
+    // Zombie and Crazy Cat Lady collide
+    func zombieHitEnemy(enemy: SKSpriteNode) {
+        enemy.removeFromParent()
+    }
+    
+    func checkCollisions() {
+        // check for any cats hit by the Zombie
+        var hitCats: [SKSpriteNode] = []
+        enumerateChildNodesWithName("cat") { node, _ in
+            let cat = node as! SKSpriteNode
+            if CGRectIntersectsRect(cat.frame, self.zombie.frame) {
+                hitCats.append(cat)
+            }
+        }
+        
+        // process any collisions detected
+        for cat in hitCats {
+                zombieHitCat(cat)
+        }
+        
+        // check for any crazy cat ladies hit
+        var hitEnemies: [SKSpriteNode] = []
+        enumerateChildNodesWithName("enemy") { node, _ in
+        let enemy = node as! SKSpriteNode
+        if CGRectIntersectsRect(CGRectInset(node.frame, 20, 20), self.zombie.frame) {
+                hitEnemies.append(enemy)
+            }
+        }
+        
+        // Here is why we don't remove the nodes while enumerating them:
+        // Note that you don’t remove the nodes from within the enumeration. 
+        // It’s unsafe to remove a node while enumerating over a list of them, and doing so can crash your app.
+        
+        for enemy in hitEnemies {
+            zombieHitEnemy(enemy)
+        }
     }
     
     

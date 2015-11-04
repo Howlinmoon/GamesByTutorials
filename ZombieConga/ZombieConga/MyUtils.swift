@@ -14,7 +14,7 @@ func + (left: CGPoint, right: CGPoint) -> CGPoint {
 }
 
 func += (inout left: CGPoint, right: CGPoint) {
-    print("leveraging new += routine")
+    //print("leveraging new += routine")
     left = left + right
 }
 
