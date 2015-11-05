@@ -30,6 +30,10 @@ class GameScene: SKScene {
     var lastTouchLocation: CGPoint?
     // used for smooth rotation when doing directional changes
     let zombieRotateRadiansPerSec:CGFloat = 4.0 * π
+    
+    // For the Zombie Cat Conga Line
+    var invincible = false
+    let catMovePointsPerSec:CGFloat = 480.0
 
     override func didMoveToView(view: SKView) {
         backgroundColor = SKColor.blackColor()
@@ -54,6 +58,8 @@ class GameScene: SKScene {
     
         // position the zombie
         zombie.position = CGPoint(x: 400, y: 400)
+        // layer 100
+        zombie.zPosition = 100
     
         // Zoom the zombie by 2x
         // zombie.setScale(2.0)
@@ -218,6 +224,7 @@ class GameScene: SKScene {
         boundsCheckZombie()
         // wrong place for this
         //checkCollisions()
+        moveTrain()
     }
     
     // Proper place in the game cycle sequence for collision checking
@@ -304,9 +311,22 @@ class GameScene: SKScene {
     }
     
     // Collision detection
-    // Zombie and cat collide - remove the cat
+    // Zombie and cat collide - zombiefy the cat
     func zombieHitCat(cat: SKSpriteNode) {
-        cat.removeFromParent()
+        // tag the cat as belonging to the conga line now
+        // this will stop us from enumerating them in collision checks
+        cat.name = "train"
+        // stop the cat from wiggling
+        cat.removeAllActions()
+        // fix the scale if needed
+        cat.setScale(1.0)
+        // fix the rotation if needed
+        cat.zRotation = 0
+        
+        // turn the cat green
+        let turnGreen = SKAction.colorizeWithColor(SKColor.greenColor(), colorBlendFactor: 1.0, duration: 0.2)
+        cat.runAction(turnGreen)
+        
         // play the appropriate sound effect
         runAction(catCollisionSound)
         //runAction(SKAction.playSoundFileNamed("hitCat.wav", waitForCompletion: false))
@@ -315,9 +335,24 @@ class GameScene: SKScene {
     // Zombie and Crazy Cat Lady collide
     func zombieHitEnemy(enemy: SKSpriteNode) {
         enemy.removeFromParent()
+        
         // play the appropriate sound effect
         runAction(enemyCollisionSound)
         //runAction(SKAction.playSoundFileNamed("hitCatLady.wav", waitForCompletion: false))
+        invincible = true
+        let blinkTimes = 10.0
+        let duration = 3.0
+        let blinkAction = SKAction.customActionWithDuration(duration) { node, elapsedTime in
+            let slice = duration / blinkTimes
+            let remainder = Double(elapsedTime) % slice
+            node.hidden = remainder > slice / 2
+        }
+        let setHidden = SKAction.runBlock() {
+            self.zombie.hidden = false
+            self.invincible = false
+        }
+        zombie.runAction(SKAction.sequence([blinkAction, setHidden]))
+
     }
     
     func checkCollisions() {
@@ -412,5 +447,27 @@ class GameScene: SKScene {
     func stopZombieAnimation() {
         zombie.removeActionForKey("animation")
     }
+    
+    // Move the cat train
+    func moveTrain() {
+        var targetPosition = zombie.position
+        // look for the cat's we tagged as part of the train
+        enumerateChildNodesWithName("train") { node, stop in
+            if !node.hasActions() {
+                
+                let actionDuration = 0.3
+                let offset = targetPosition - node.position
+                let direction = offset.normalized()
+                let amountToMovePerSec = direction * self.catMovePointsPerSec
+                let amountToMove = amountToMovePerSec * CGFloat(actionDuration)
+                let moveAction = SKAction.moveByX(amountToMove.x, y: amountToMove.y, duration: actionDuration)
+                node.runAction(moveAction)
+            }
+            targetPosition = node.position
+            
+        }
+        
+    }
+
     
 }
