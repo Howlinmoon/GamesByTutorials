@@ -34,6 +34,10 @@ class GameScene: SKScene {
     // For the Zombie Cat Conga Line
     var invincible = false
     let catMovePointsPerSec:CGFloat = 480.0
+    
+    // Gameplay purposes
+    var lives = 5
+    var gameOver = false
 
     override func didMoveToView(view: SKView) {
         backgroundColor = SKColor.blackColor()
@@ -159,6 +163,7 @@ class GameScene: SKScene {
     func spawnCat() {
         // 1
         let cat = SKSpriteNode(imageNamed: "cat")
+        //let cat = SKSpriteNode(imageNamed: "44")
         cat.name = "cat"
         // randomize the starting location to anywhere in the playable area
         cat.position = CGPoint(
@@ -198,7 +203,7 @@ class GameScene: SKScene {
         cat.runAction(SKAction.sequence(actions))
     }
     
-    // Experiment with moving the zombie
+    // The master game UPDATE loop
     override func update(currentTime: NSTimeInterval) {
         
         if lastUpdateTime > 0 {
@@ -225,6 +230,12 @@ class GameScene: SKScene {
         // wrong place for this
         //checkCollisions()
         moveTrain()
+        
+        // check for game over
+        if lives <= 0 && !gameOver {
+            gameOver = true
+            print("You Lose!")
+        }
     }
     
     // Proper place in the game cycle sequence for collision checking
@@ -338,6 +349,10 @@ class GameScene: SKScene {
         
         // play the appropriate sound effect
         runAction(enemyCollisionSound)
+        // sadly - this costs the Zombie a "life"
+        lives--
+        // and 2 cats
+        loseCats()
         //runAction(SKAction.playSoundFileNamed("hitCatLady.wav", waitForCompletion: false))
         invincible = true
         let blinkTimes = 10.0
@@ -450,9 +465,13 @@ class GameScene: SKScene {
     
     // Move the cat train
     func moveTrain() {
+        // keep track of how many cats are in the train for the win
+        var trainCount = 0
+        
         var targetPosition = zombie.position
         // look for the cat's we tagged as part of the train
         enumerateChildNodesWithName("train") { node, stop in
+            trainCount++
             if !node.hasActions() {
                 
                 let actionDuration = 0.3
@@ -467,6 +486,44 @@ class GameScene: SKScene {
             
         }
         
+        // well - did we win?
+        if trainCount >= 15 && !gameOver {
+            gameOver = true
+            print("You Win!")
+        }
+        
+    }
+    
+    // Remove cats from the Conga Line
+    func loseCats() {
+        // 1
+        var loseCount = 0
+        enumerateChildNodesWithName("train") { node, stop in
+            // 2
+            // "node" is the currently selected cat sprite/node
+            var randomSpot = node.position
+            randomSpot.x += CGFloat.random(min: -100, max: 100)
+            randomSpot.y += CGFloat.random(min: -100, max: 100)
+            
+            // 3
+            node.name = ""
+            node.runAction(
+            SKAction.sequence([
+                SKAction.group([
+                    SKAction.rotateByAngle(π*4, duration: 1.0),
+                    SKAction.moveTo(randomSpot, duration: 1.0),
+                    SKAction.scaleTo(0, duration: 1.0)
+                    ]),
+                SKAction.removeFromParent()
+                ]))
+            // 4
+            loseCount++
+            if loseCount >= 2 {
+                // this stops any further enumerations - otherwise, we'd keep
+                // removing all of the cats!
+                stop.memory = true
+            }
+        }
     }
 
     
