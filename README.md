@@ -2,6 +2,7 @@
 
 Project:  Zombie Conga
 
-Left off - Page: 112
+Left off - Page: 122
 
-Conga Line is working - now to work on win/lose
+Win or Lose scenes are now functioning
+

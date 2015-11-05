@@ -40,6 +40,7 @@ class GameScene: SKScene {
     var gameOver = false
 
     override func didMoveToView(view: SKView) {
+        playBackgroundMusic("backgroundMusic.mp3")
         backgroundColor = SKColor.blackColor()
     
     
@@ -85,7 +86,7 @@ class GameScene: SKScene {
         let mySize = background.size
         print("Size is \(mySize)")
     
-        debugDrawPlayableArea()
+        //debugDrawPlayableArea()
     }
     
     // Original Enemy spawner for historical purposes
@@ -235,6 +236,14 @@ class GameScene: SKScene {
         if lives <= 0 && !gameOver {
             gameOver = true
             print("You Lose!")
+            backgroundMusicPlayer.stop()
+            // 1
+            let gameOverScene = GameOverScene(size: size, won: false)
+            gameOverScene.scaleMode = scaleMode
+            // 2
+            let reveal = SKTransition.flipHorizontalWithDuration(0.5)
+            // 3
+            view?.presentScene(gameOverScene, transition: reveal)
         }
     }
     
@@ -490,6 +499,14 @@ class GameScene: SKScene {
         if trainCount >= 15 && !gameOver {
             gameOver = true
             print("You Win!")
+            backgroundMusicPlayer.stop()
+            // 1
+                let gameOverScene = GameOverScene(size: size, won: true)
+            gameOverScene.scaleMode = scaleMode
+            // 2
+            let reveal = SKTransition.flipHorizontalWithDuration(0.5)
+            // 3
+            view?.presentScene(gameOverScene, transition: reveal)
         }
         
     }
