@@ -13,6 +13,10 @@ class GameScene: SKScene {
     let zombie = SKSpriteNode(imageNamed: "zombie1")
     let zombieAnimation: SKAction
     
+    // used for shared instances of sound effects
+    let catCollisionSound: SKAction = SKAction.playSoundFileNamed("hitCat.wav", waitForCompletion: false)
+    let enemyCollisionSound: SKAction = SKAction.playSoundFileNamed("hitCatLady.wav", waitForCompletion: false)
+    
     // Used for computing update time intervals
     var lastUpdateTime: NSTimeInterval = 0
     var dt: NSTimeInterval = 0
@@ -304,14 +308,16 @@ class GameScene: SKScene {
     func zombieHitCat(cat: SKSpriteNode) {
         cat.removeFromParent()
         // play the appropriate sound effect
-        runAction(SKAction.playSoundFileNamed("hitCat.wav", waitForCompletion: false))
+        runAction(catCollisionSound)
+        //runAction(SKAction.playSoundFileNamed("hitCat.wav", waitForCompletion: false))
     }
     
     // Zombie and Crazy Cat Lady collide
     func zombieHitEnemy(enemy: SKSpriteNode) {
         enemy.removeFromParent()
         // play the appropriate sound effect
-        runAction(SKAction.playSoundFileNamed("hitCatLady.wav", waitForCompletion: false))
+        runAction(enemyCollisionSound)
+        //runAction(SKAction.playSoundFileNamed("hitCatLady.wav", waitForCompletion: false))
     }
     
     func checkCollisions() {
