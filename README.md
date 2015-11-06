@@ -2,7 +2,7 @@
 
 Project:  Zombie Conga
 
-Left off - Page: 122
+Left off - Page: 124
 
-Win or Lose scenes are now functioning
+Added a Main Menu type page
 
