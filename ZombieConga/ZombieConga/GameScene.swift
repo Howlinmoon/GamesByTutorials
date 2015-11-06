@@ -38,6 +38,9 @@ class GameScene: SKScene {
     // Gameplay purposes
     var lives = 5
     var gameOver = false
+    
+    // Experimenting with game camera movements
+    let cameraNode = SKCameraNode()
 
     override func didMoveToView(view: SKView) {
         playBackgroundMusic("backgroundMusic.mp3")
@@ -87,6 +90,13 @@ class GameScene: SKScene {
         print("Size is \(mySize)")
     
         //debugDrawPlayableArea()
+        
+        // Camera experimenting
+        addChild(cameraNode)
+        camera = cameraNode
+        //cameraNode.position = CGPoint(x: size.width/2, y: size.height/2)
+        //cameraNode.position = zombie.position
+        setCameraPosition(CGPoint(x: size.width/2, y: size.height/2))
     }
     
     // Original Enemy spawner for historical purposes
@@ -541,6 +551,23 @@ class GameScene: SKScene {
                 stop.memory = true
             }
         }
+    }
+    
+    
+    
+    func overlapAmount() -> CGFloat {
+        guard let view = self.view else {
+            return 0 }
+        let scale = view.bounds.size.width / self.size.width
+        let scaledHeight = self.size.height * scale
+        let scaledOverlap = scaledHeight - view.bounds.size.height
+        return scaledOverlap / scale
+    }
+    func getCameraPosition() -> CGPoint {
+        return CGPoint(x: cameraNode.position.x, y: cameraNode.position.y + overlapAmount()/2)
+    }
+    func setCameraPosition(position: CGPoint) {
+        cameraNode.position = CGPoint(x: position.x, y: position.y - overlapAmount()/2)
     }
 
     
