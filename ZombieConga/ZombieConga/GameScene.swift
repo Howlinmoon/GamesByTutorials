@@ -9,7 +9,7 @@
 import SpriteKit
 class GameScene: SKScene {
 
-    let background = SKSpriteNode(imageNamed: "background1")
+    //let background = SKSpriteNode(imageNamed: "background1")
     let zombie = SKSpriteNode(imageNamed: "zombie1")
     let zombieAnimation: SKAction
     
@@ -41,6 +41,10 @@ class GameScene: SKScene {
     
     // Experimenting with game camera movements
     let cameraNode = SKCameraNode()
+    
+    // camera scrolling speed
+    let cameraMovePointsPerSec: CGFloat = 200.0
+    
 
     override func didMoveToView(view: SKView) {
         playBackgroundMusic("backgroundMusic.mp3")
@@ -55,9 +59,15 @@ class GameScene: SKScene {
         // background.position = CGPoint.zero
     
         // method #3
-        background.position = CGPoint(x: size.width/2, y: size.height/2)
-        background.anchorPoint = CGPoint(x: 0.5, y: 0.5) // default
+        //background.position = CGPoint(x: size.width/2, y: size.height/2)
+        //background.anchorPoint = CGPoint(x: 0.5, y: 0.5) // default
     
+        let background = backgroundNode()
+        background.anchorPoint = CGPoint.zero
+        background.position = CGPoint.zero
+        background.name = "background"
+        addChild(background)
+        
         // Experimenting with rotation
         // background.zRotation = CGFloat(M_PI) / 8
     
@@ -72,7 +82,7 @@ class GameScene: SKScene {
         // Zoom the zombie by 2x
         // zombie.setScale(2.0)
     
-        addChild(background)
+        //addChild(background)
         addChild(zombie)
         
         // Spawn the Crazy Cat Lady
@@ -241,6 +251,9 @@ class GameScene: SKScene {
         // wrong place for this
         //checkCollisions()
         moveTrain()
+            
+        // Move the camera
+        moveCamera()
         
         // check for game over
         if lives <= 0 && !gameOver {
@@ -554,7 +567,7 @@ class GameScene: SKScene {
     }
     
     
-    
+    // camera specific methods
     func overlapAmount() -> CGFloat {
         guard let view = self.view else {
             return 0 }
@@ -568,6 +581,42 @@ class GameScene: SKScene {
     }
     func setCameraPosition(position: CGPoint) {
         cameraNode.position = CGPoint(x: position.x, y: position.y - overlapAmount()/2)
+    }
+    
+    func moveCamera() {
+        let backgroundVelocity = CGPoint(x: cameraMovePointsPerSec, y:0)
+        let amountToMove = backgroundVelocity * CGFloat(dt)
+        cameraNode.position += amountToMove
+    }
+    
+    // Adding a second continuous background to the original scene
+    func backgroundNode() -> SKSpriteNode {
+            
+            // 1
+            let backgroundNode = SKSpriteNode()
+            backgroundNode.anchorPoint = CGPoint.zero
+            backgroundNode.name = "background"
+            
+            // 2
+            let background1 = SKSpriteNode(imageNamed: "background1")
+            background1.anchorPoint = CGPoint.zero
+            background1.position = CGPoint(x: 0, y: 0)
+            backgroundNode.addChild(background1)
+            
+            // 3
+            let background2 = SKSpriteNode(imageNamed: "background2")
+            background2.anchorPoint = CGPoint.zero
+            // move this background over to the right of background1
+            background2.position = CGPoint(x: background1.size.width, y:0)
+            backgroundNode.addChild(background2)
+            
+            // 4
+            backgroundNode.size = CGSize(width: background1.size.width + background2.size.width, height: background1.size.height)
+            
+            // finally
+            
+            return backgroundNode
+            
     }
 
     
