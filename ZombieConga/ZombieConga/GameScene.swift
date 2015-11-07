@@ -9,6 +9,7 @@ import SpriteKit
 
 class GameScene: SKScene {
     
+    // Our game properties
     let zombie = SKSpriteNode(imageNamed: "zombie1")
     var lastUpdateTime: NSTimeInterval = 0
     var dt: NSTimeInterval = 0
@@ -18,14 +19,17 @@ class GameScene: SKScene {
     var lastTouchLocation: CGPoint?
     let zombieRotateRadiansPerSec:CGFloat = 4.0 * π
     let zombieAnimation: SKAction
-    let catCollisionSound: SKAction = SKAction.playSoundFileNamed(
-        "hitCat.wav", waitForCompletion: false)
-    let enemyCollisionSound: SKAction = SKAction.playSoundFileNamed(
-        "hitCatLady.wav", waitForCompletion: false)
+    let catCollisionSound: SKAction = SKAction.playSoundFileNamed("hitCat.wav", waitForCompletion:false)
+    let enemyCollisionSound: SKAction = SKAction.playSoundFileNamed("hitCatLady.wav", waitForCompletion: false)
     var invincible = false
     let catMovePointsPerSec:CGFloat = 480.0
     var lives = 5
     var gameOver = false
+    
+    // Experimenting with the camera
+    
+    let cameraNode = SKCameraNode()
+    
     
     override init(size: CGSize) {
         let maxAspectRatio:CGFloat = 16.0/9.0
@@ -81,7 +85,10 @@ class GameScene: SKScene {
                 SKAction.waitForDuration(1.0)])))
         
         // debugDrawPlayableArea()
-        
+        addChild(cameraNode)
+        camera = cameraNode
+        //cameraNode.position = CGPoint(x: size.width/2, y: size.height/2)
+        setCameraPosition(CGPoint(x: size.width/2, y: size.height/2))
     }
     
     override func update(currentTime: NSTimeInterval) {
@@ -122,6 +129,8 @@ class GameScene: SKScene {
             // 3
             view?.presentScene(gameOverScene, transition: reveal)
         }
+        
+        //cameraNode.position = zombie.position
         
     }
     
@@ -395,4 +404,44 @@ class GameScene: SKScene {
         }
     }
     
+    
+    func overlapAmount() -> CGFloat {
+        guard let view = self.view else {
+        return 0 }
+        let scale = view.bounds.size.width / self.size.width
+        let scaledHeight = self.size.height * scale
+        let scaledOverlap = scaledHeight - view.bounds.size.height
+        return scaledOverlap / scale
+    }
+    func getCameraPosition() -> CGPoint {
+        return CGPoint(x: cameraNode.position.x, y: cameraNode.position.y +
+        overlapAmount()/2)
+    }
+    func setCameraPosition(position: CGPoint) {
+        cameraNode.position = CGPoint(x: position.x, y: position.y -
+        overlapAmount()/2)
+    }
+    
+    func backgroundNode() -> SKSpriteNode {
+        // 1
+        let backgroundNode = SKSpriteNode()
+        backgroundNode.anchorPoint = CGPoint.zero
+        backgroundNode.name = "background"
+        // 2
+        let background1 = SKSpriteNode(imageNamed: "background1")
+        background1.anchorPoint = CGPoint.zero
+        background1.position = CGPoint(x: 0, y: 0)
+        backgroundNode.addChild(background1)
+        // 3
+        let background2 = SKSpriteNode(imageNamed: "background2")
+        background2.anchorPoint = CGPoint.zero
+        background2.position =
+        CGPoint(x: background1.size.width, y: 0)
+        backgroundNode.addChild(background2)
+        // 4
+        backgroundNode.size = CGSize(
+        width: background1.size.width + background2.size.width,
+        height: background1.size.height)
+        return backgroundNode
+    }
 }
