@@ -73,12 +73,13 @@ class GameScene: SKScene {
         addChild(background)
         */
         
-        let background = backgroundNode()
-        background.anchorPoint = CGPoint.zero
-        background.position = CGPoint.zero
-        background.name = "background"
-        addChild(background)
-        
+        for i in 0...1 {
+            let background = backgroundNode()
+            background.anchorPoint = CGPoint.zero
+            background.position = CGPoint(x: CGFloat(i)*background.size.width, y: 0)
+            background.name = "background"
+            addChild(background)
+        }
         
         zombie.position = CGPoint(x: 400, y: 400)
         zombie.zPosition = 100
@@ -456,9 +457,29 @@ class GameScene: SKScene {
     
     
     func moveCamera() {
-            let backgroundVelocity =
-            CGPoint(x: cameraMovePointsPerSec, y: 0)
-            let amountToMove = backgroundVelocity * CGFloat(dt)
-            cameraNode.position += amountToMove
+        let backgroundVelocity =
+        CGPoint(x: cameraMovePointsPerSec, y: 0)
+        let amountToMove = backgroundVelocity * CGFloat(dt)
+        cameraNode.position += amountToMove
+        enumerateChildNodesWithName("background") { node, _ in
+            let background = node as! SKSpriteNode
+            if background.position.x + background.size.width <
+            self.cameraRect.origin.x {
+            background.position = CGPoint(
+            x: background.position.x + background.size.width*2,
+            y: background.position.y)
+            }
+        }
     }
+    
+    var cameraRect : CGRect {
+        return CGRect(
+        x: getCameraPosition().x - size.width/2
+        + (size.width - playableRect.width)/2,
+        y: getCameraPosition().y - size.height/2
+        + (size.height - playableRect.height)/2,
+        width: playableRect.width,
+        height: playableRect.height)
+    }
+    
 }

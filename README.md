@@ -2,7 +2,6 @@
 
 Project:  Zombie Conga
 
-Reverted back to - Page: 124
+Left off on page 133
 
-Added a Main Menu type page
-
+Experimenting with the camera and scrolling background
