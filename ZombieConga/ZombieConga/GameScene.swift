@@ -29,7 +29,7 @@ class GameScene: SKScene {
     // Experimenting with the camera
     
     let cameraNode = SKCameraNode()
-    
+    let cameraMovePointsPerSec: CGFloat = 200.0
     
     override init(size: CGSize) {
         let maxAspectRatio:CGFloat = 16.0/9.0
@@ -65,12 +65,20 @@ class GameScene: SKScene {
         playBackgroundMusic("backgroundMusic.mp3")
         
         backgroundColor = SKColor.blackColor()
-        
+        /*
         let background = SKSpriteNode(imageNamed: "background1")
         background.position = CGPoint(x: size.width/2, y: size.height/2)
         background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         background.zPosition = -1
         addChild(background)
+        */
+        
+        let background = backgroundNode()
+        background.anchorPoint = CGPoint.zero
+        background.position = CGPoint.zero
+        background.name = "background"
+        addChild(background)
+        
         
         zombie.position = CGPoint(x: 400, y: 400)
         zombie.zPosition = 100
@@ -115,6 +123,7 @@ class GameScene: SKScene {
         boundsCheckZombie()
         // checkCollisions()
         moveTrain()
+        moveCamera()
         
         if lives <= 0 && !gameOver {
             gameOver = true
@@ -443,5 +452,13 @@ class GameScene: SKScene {
         width: background1.size.width + background2.size.width,
         height: background1.size.height)
         return backgroundNode
+    }
+    
+    
+    func moveCamera() {
+            let backgroundVelocity =
+            CGPoint(x: cameraMovePointsPerSec, y: 0)
+            let amountToMove = backgroundVelocity * CGFloat(dt)
+            cameraNode.position += amountToMove
     }
 }
