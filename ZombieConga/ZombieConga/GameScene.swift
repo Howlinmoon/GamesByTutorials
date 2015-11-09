@@ -230,14 +230,15 @@ class GameScene: SKScene {
         let enemy = SKSpriteNode(imageNamed: "enemy")
         enemy.name = "enemy"
         enemy.position = CGPoint(
-            x: size.width + enemy.size.width/2,
+            x: CGRectGetMaxX(cameraRect) + enemy.size.width/2,
             y: CGFloat.random(
-                min: CGRectGetMinY(playableRect) + enemy.size.height/2,
-                max: CGRectGetMaxY(playableRect) - enemy.size.height/2))
+                min: CGRectGetMinY(cameraRect) + enemy.size.height/2,
+                max: CGRectGetMaxY(cameraRect) - enemy.size.height/2))
+        enemy.zPosition = 50
         addChild(enemy)
         
         let actionMove =
-        SKAction.moveToX(-enemy.size.width/2, duration: 2.0)
+        SKAction.moveToX(-size.width-enemy.size.width*2, duration: 2.0)
         let actionRemove = SKAction.removeFromParent()
         enemy.runAction(SKAction.sequence([actionMove, actionRemove]))
     }
