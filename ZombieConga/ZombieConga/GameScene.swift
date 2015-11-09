@@ -108,7 +108,7 @@ class GameScene: SKScene {
             dt = 0
         }
         lastUpdateTime = currentTime
-        
+        /*
         if let lastTouchLocation = lastTouchLocation {
             let diff = lastTouchLocation - zombie.position
             if (diff.length() <= zombieMovePointsPerSec * CGFloat(dt)) {
@@ -116,10 +116,13 @@ class GameScene: SKScene {
                 velocity = CGPointZero
                 stopZombieAnimation()
             } else {
+                */
                 moveSprite(zombie, velocity: velocity)
                 rotateSprite(zombie, direction: velocity, rotateRadiansPerSec: zombieRotateRadiansPerSec)
+        /*
             }
         }
+        */
         
         boundsCheckZombie()
         // checkCollisions()
@@ -181,11 +184,12 @@ class GameScene: SKScene {
             sceneTouched(touchLocation)
     }
     
+    // Keep the Zombie in the game
     func boundsCheckZombie() {
-        let bottomLeft = CGPoint(x: 0,
-            y: CGRectGetMinY(playableRect))
-        let topRight = CGPoint(x: size.width,
-            y: CGRectGetMaxY(playableRect))
+        let bottomLeft = CGPoint(x: CGRectGetMinX(cameraRect),
+            y: CGRectGetMinY(cameraRect))
+        let topRight = CGPoint(x: CGRectGetMaxX(cameraRect),
+            y: CGRectGetMaxY(cameraRect))
         
         if zombie.position.x <= bottomLeft.x {
             zombie.position.x = bottomLeft.x
@@ -255,10 +259,11 @@ class GameScene: SKScene {
         let cat = SKSpriteNode(imageNamed: "cat")
         cat.name = "cat"
         cat.position = CGPoint(
-            x: CGFloat.random(min: CGRectGetMinX(playableRect),
-                max: CGRectGetMaxX(playableRect)),
-            y: CGFloat.random(min: CGRectGetMinY(playableRect),
-                max: CGRectGetMaxY(playableRect)))
+            x: CGFloat.random(min: CGRectGetMinX(cameraRect),
+                max: CGRectGetMaxX(cameraRect)),
+            y: CGFloat.random(min: CGRectGetMinY(cameraRect),
+                max: CGRectGetMaxY(cameraRect)))
+        cat.zPosition = 50
         cat.setScale(0)
         addChild(cat)
         // 2
