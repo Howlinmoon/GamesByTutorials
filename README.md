@@ -2,6 +2,6 @@
 
 Project:  Zombie Conga
 
-Left off on page 136
+Left off on page 149
 
-Experimenting with the camera and scrolling background
+Experimenting with Labels, Cats and Lives

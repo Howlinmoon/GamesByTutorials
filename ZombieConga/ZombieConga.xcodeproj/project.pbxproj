@@ -17,6 +17,7 @@
 		969C78351BEBC55700176F2B /* 44.png in Resources */ = {isa = PBXBuildFile; fileRef = 969C78341BEBC55700176F2B /* 44.png */; };
 		969C78371BEBCB8400176F2B /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969C78361BEBCB8400176F2B /* GameOverScene.swift */; };
 		96DF07601BECC5C900D03994 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DF075F1BECC5C900D03994 /* MainMenuScene.swift */; };
+		96DFEA091BF1159600A18E19 /* free.txt in Resources */ = {isa = PBXBuildFile; fileRef = 96DFEA081BF1159600A18E19 /* free.txt */; };
 		96FE877B1BEA7E41007BE92F /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96FE87761BEA7E41007BE92F /* backgroundMusic.mp3 */; };
 		96FE877C1BEA7E41007BE92F /* hitCat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 96FE87771BEA7E41007BE92F /* hitCat.wav */; };
 		96FE877D1BEA7E41007BE92F /* hitCatLady.wav in Resources */ = {isa = PBXBuildFile; fileRef = 96FE87781BEA7E41007BE92F /* hitCatLady.wav */; };
@@ -37,6 +38,7 @@
 		969C78341BEBC55700176F2B /* 44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 44.png; path = Sounds/44.png; sourceTree = "<group>"; };
 		969C78361BEBCB8400176F2B /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		96DF075F1BECC5C900D03994 /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
+		96DFEA081BF1159600A18E19 /* free.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = free.txt; sourceTree = "<group>"; };
 		96FE87761BEA7E41007BE92F /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic.mp3; sourceTree = "<group>"; };
 		96FE87771BEA7E41007BE92F /* hitCat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hitCat.wav; sourceTree = "<group>"; };
 		96FE87781BEA7E41007BE92F /* hitCatLady.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hitCatLady.wav; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				968239E21BE2805000417CC8 /* GameViewController.swift */,
 				968239E41BE2805000417CC8 /* Main.storyboard */,
 				968239E71BE2805000417CC8 /* Assets.xcassets */,
+				96DFEA081BF1159600A18E19 /* free.txt */,
 				969C78341BEBC55700176F2B /* 44.png */,
 				96FE87751BEA7E41007BE92F /* Sounds */,
 				968239E91BE2805000417CC8 /* LaunchScreen.storyboard */,
@@ -165,6 +168,7 @@
 				96FE877F1BEA7E41007BE92F /* win.wav in Resources */,
 				96FE877C1BEA7E41007BE92F /* hitCat.wav in Resources */,
 				968239E81BE2805000417CC8 /* Assets.xcassets in Resources */,
+				96DFEA091BF1159600A18E19 /* free.txt in Resources */,
 				969C78351BEBC55700176F2B /* 44.png in Resources */,
 				96FE877E1BEA7E41007BE92F /* lose.wav in Resources */,
 				96FE877D1BEA7E41007BE92F /* hitCatLady.wav in Resources */,

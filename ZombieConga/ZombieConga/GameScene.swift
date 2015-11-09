@@ -24,10 +24,14 @@ class GameScene: SKScene {
         "hitCatLady.wav", waitForCompletion: false)
     var invincible = false
     let catMovePointsPerSec:CGFloat = 480.0
-    var lives = 5
+    var lives = 10
     var gameOver = false
     let cameraNode = SKCameraNode()
     let cameraMovePointsPerSec: CGFloat = 200.0
+    
+    // Font properties
+    let livesLabel = SKLabelNode(fontNamed: "Glimstick")
+    
     
     override init(size: CGSize) {
         let maxAspectRatio:CGFloat = 16.0/9.0
@@ -91,6 +95,23 @@ class GameScene: SKScene {
         camera = cameraNode
         setCameraPosition(CGPoint(x: size.width/2, y: size.height/2))
         
+        // Create a label for the remaining lives
+        livesLabel.text = "Lives: X"
+        livesLabel.fontColor = SKColor.blackColor()
+        livesLabel.fontSize = 100
+        livesLabel.zPosition = 100
+        
+        // this results in a scrolling label
+        // livesLabel.position = CGPoint(x: size.width/2, y: size.height/2)
+        // addChild(livesLabel)
+        
+        // attach the label to the camera instead
+        //livesLabel.position = CGPoint.zero
+        livesLabel.horizontalAlignmentMode = .Left
+        livesLabel.verticalAlignmentMode = .Bottom
+        livesLabel.position = CGPoint(x: -playableRect.size.width/2 + CGFloat(20), y: -playableRect.size.height/2 + CGFloat(20) + overlapAmount()/2)
+        
+        cameraNode.addChild(livesLabel)
     }
     
     override func update(currentTime: NSTimeInterval) {
@@ -381,6 +402,9 @@ class GameScene: SKScene {
             // 3
             view?.presentScene(gameOverScene, transition: reveal)
         }
+        
+        // Update the Lives Label
+        livesLabel.text = "Lives: \(lives)"
         
     }
     
