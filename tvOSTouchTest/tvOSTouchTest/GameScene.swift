@@ -9,37 +9,36 @@
 import SpriteKit
 
 class GameScene: SKScene {
+
+    //1
+    let pressLabel = SKLabelNode(fontNamed: "Chalkduster")
+    //2
+    let touchBox = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: 100, height: 100))
+    
     override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!";
-        myLabel.fontSize = 65;
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+        // 3
+        pressLabel.text = "Move your finger"
+        pressLabel.fontSize = 200
+        pressLabel.verticalAlignmentMode = .Center
+        pressLabel.horizontalAlignmentMode = .Center
+        pressLabel.position = CGPoint(x: size.width/2, y: size.height/2)
+        addChild(pressLabel)
         
-        self.addChild(myLabel)
+        //4
+        addChild(touchBox)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        /* Called when a touch begins */
-        
         for touch in touches {
             let location = touch.locationInNode(self)
-            
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-            
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
+            touchBox.position = location
         }
     }
-   
-    override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
+    
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        for touch in touches {
+            let location = touch.locationInNode(self)
+            touchBox.position = location
+        }
     }
 }
