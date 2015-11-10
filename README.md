@@ -2,6 +2,6 @@
 
 Project:  Zombie Conga
 
-Left off on page 149
+Left off on page 159
 
-Experimenting with Labels, Cats and Lives
+Experimenting with TV OS

@@ -41,4 +41,40 @@ class GameScene: SKScene {
             touchBox.position = location
         }
     }
+
+    //1
+    override func pressesBegan(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
+        for press in presses {
+            //2
+            switch press.type {
+            case .UpArrow:
+                pressLabel.text = "Up Arrow"
+            case .DownArrow:
+                pressLabel.text = "Down Arrow"
+            case .RightArrow:
+                pressLabel.text = "Right Arrow"
+            case .LeftArrow:
+                pressLabel.text = "Left Arrow"
+            case .Select:
+                pressLabel.text = "Select"
+            case .Menu:
+                pressLabel.text = "Menu"
+            case .PlayPause:
+                pressLabel.text = "Play/Pause"
+            }
+        }
+    }
+    
+    override func pressesEnded(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
+        //3
+        self.removeAllActions()
+        runAction(SKAction.sequence([
+            SKAction.waitForDuration(10),
+            SKAction.runBlock() {
+                self.pressLabel.text = ""
+            }
+            ]))
+    }
+
+
 }

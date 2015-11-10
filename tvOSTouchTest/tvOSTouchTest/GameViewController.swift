@@ -21,4 +21,13 @@ class GameViewController: UIViewController {
         gameScene.scaleMode = .AspectFill
         skView.presentScene(gameScene)
     }
+    
+    override func pressesBegan(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
+        gameScene.pressesBegan(presses, withEvent: event)
+    }
+    
+    override func pressesEnded(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
+            gameScene.pressesEnded(presses, withEvent: event)
+    }
+    
 }
