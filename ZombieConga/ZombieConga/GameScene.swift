@@ -31,6 +31,7 @@ class GameScene: SKScene {
     
     // Font properties
     let livesLabel = SKLabelNode(fontNamed: "Glimstick")
+    let catsLabel = SKLabelNode(fontNamed: "Glimstick")
     
     
     override init(size: CGSize) {
@@ -101,6 +102,12 @@ class GameScene: SKScene {
         livesLabel.fontSize = 100
         livesLabel.zPosition = 100
         
+        // Create a label for the accumulative cats
+        catsLabel.text = "Cats: X"
+        catsLabel.fontColor = SKColor.blackColor()
+        catsLabel.fontSize = 100
+        catsLabel.zPosition = 100
+        
         // this results in a scrolling label
         // livesLabel.position = CGPoint(x: size.width/2, y: size.height/2)
         // addChild(livesLabel)
@@ -110,8 +117,13 @@ class GameScene: SKScene {
         livesLabel.horizontalAlignmentMode = .Left
         livesLabel.verticalAlignmentMode = .Bottom
         livesLabel.position = CGPoint(x: -playableRect.size.width/2 + CGFloat(20), y: -playableRect.size.height/2 + CGFloat(20) + overlapAmount()/2)
-        
+
+        catsLabel.horizontalAlignmentMode = .Right
+        catsLabel.verticalAlignmentMode = .Bottom
+        catsLabel.position = CGPoint(x: playableRect.size.width/2 - CGFloat(10), y: -playableRect.size.height/2 + CGFloat(20) + overlapAmount()/2)
+
         cameraNode.addChild(livesLabel)
+        cameraNode.addChild(catsLabel)
     }
     
     override func update(currentTime: NSTimeInterval) {
@@ -405,6 +417,9 @@ class GameScene: SKScene {
         
         // Update the Lives Label
         livesLabel.text = "Lives: \(lives)"
+        // Update the cats label
+        catsLabel.text = "Cats: \(trainCount)"
+
         
     }
     
