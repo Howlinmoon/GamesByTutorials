@@ -33,6 +33,9 @@ class GameScene: SKScene {
     let livesLabel = SKLabelNode(fontNamed: "Glimstick")
     let catsLabel = SKLabelNode(fontNamed: "Glimstick")
     
+    // for tvOS oddities
+    let touchBox = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: 100, height: 100))
+    var priorTouch: CGPoint = CGPoint.zero
     
     override init(size: CGSize) {
         let maxAspectRatio:CGFloat = 16.0/9.0
@@ -124,6 +127,11 @@ class GameScene: SKScene {
 
         cameraNode.addChild(livesLabel)
         cameraNode.addChild(catsLabel)
+        touchBox.zPosition = 100
+        addChild(touchBox)
+        // turn it off, except for debug purposes
+        touchBox.hidden = true
+        
     }
     
     override func update(currentTime: NSTimeInterval) {
@@ -196,7 +204,12 @@ class GameScene: SKScene {
                 return
             }
             let touchLocation = touch.locationInNode(self)
-            sceneTouched(touchLocation)
+            touchBox.position = touchLocation
+            #if os (tvOS)
+                priorTouch = touchLocation
+            #else
+                sceneTouched(touchLocation)
+            #endif
     }
     
     override func touchesMoved(touches: Set<UITouch>,
@@ -205,7 +218,22 @@ class GameScene: SKScene {
                 return
             }
             let touchLocation = touch.locationInNode(self)
-            sceneTouched(touchLocation)
+            #if os (tvOS)
+                // 1
+                let offset = touchLocation - priorTouch
+                let direction = offset.normalized()
+                velocity = direction * zombieMovePointsPerSec
+            
+                // 2
+                priorTouch = (priorTouch * 0.75) + (touchLocation * 0.25)
+            
+                // 3
+                touchBox.position = zombie.position + (direction*200)
+            #else
+                touchBox.position = touchLocation
+                sceneTouched(touchLocation)
+            #endif
+            
     }
     
     func boundsCheckZombie() {

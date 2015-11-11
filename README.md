@@ -1,9 +1,9 @@
 # GamesByTutorials
 
-Project:  Zombie Conga
+Project:  Cat Nap
 
-Left off on page 164
+Left off on page 168
 
-Experimenting with TV OS
+Ran into issues adding the large and small icons for the tvOS version
+of Zombie Conga
 
-Got it working with my signing credentials!
