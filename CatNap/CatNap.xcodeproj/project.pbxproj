@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9600F1841BF5081A00C6877D /* Cat.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9600F1831BF5081A00C6877D /* Cat.sks */; };
 		9601EAF71BF4AD480008501D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9601EAF61BF4AD480008501D /* AppDelegate.swift */; };
 		9601EAF91BF4AD480008501D /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9601EAF81BF4AD480008501D /* GameScene.sks */; };
 		9601EAFB1BF4AD480008501D /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9601EAFA1BF4AD480008501D /* GameScene.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9600F1831BF5081A00C6877D /* Cat.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Cat.sks; sourceTree = "<group>"; };
 		9601EAF31BF4AD480008501D /* CatNap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatNap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9601EAF61BF4AD480008501D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9601EAF81BF4AD480008501D /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -68,8 +70,8 @@
 		9601EAF51BF4AD480008501D /* CatNap */ = {
 			isa = PBXGroup;
 			children = (
+				96D302BD1BF5071B006183D3 /* Scenes */,
 				9601EAF61BF4AD480008501D /* AppDelegate.swift */,
-				9601EAF81BF4AD480008501D /* GameScene.sks */,
 				9601EAFA1BF4AD480008501D /* GameScene.swift */,
 				9601EAFC1BF4AD480008501D /* GameViewController.swift */,
 				9601EAFE1BF4AD480008501D /* Main.storyboard */,
@@ -91,6 +93,15 @@
 				9601EB111BF4AFBA0008501D /* win.mp3 */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		96D302BD1BF5071B006183D3 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				9601EAF81BF4AD480008501D /* GameScene.sks */,
+				9600F1831BF5081A00C6877D /* Cat.sks */,
+			);
+			name = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +162,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9600F1841BF5081A00C6877D /* Cat.sks in Resources */,
 				9601EB161BF4AFBA0008501D /* win.mp3 in Resources */,
 				9601EAF91BF4AD480008501D /* GameScene.sks in Resources */,
 				9601EB051BF4AD480008501D /* LaunchScreen.storyboard in Resources */,
@@ -322,6 +334,7 @@
 				9601EB0B1BF4AD480008501D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
