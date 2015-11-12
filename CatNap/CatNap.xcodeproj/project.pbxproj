@@ -14,6 +14,11 @@
 		9601EB001BF4AD480008501D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9601EAFE1BF4AD480008501D /* Main.storyboard */; };
 		9601EB021BF4AD480008501D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9601EB011BF4AD480008501D /* Assets.xcassets */; };
 		9601EB051BF4AD480008501D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9601EB031BF4AD480008501D /* LaunchScreen.storyboard */; };
+		9601EB121BF4AFBA0008501D /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9601EB0D1BF4AFBA0008501D /* backgroundMusic.mp3 */; };
+		9601EB131BF4AFBA0008501D /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9601EB0E1BF4AFBA0008501D /* lose.mp3 */; };
+		9601EB141BF4AFBA0008501D /* mrreow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9601EB0F1BF4AFBA0008501D /* mrreow.mp3 */; };
+		9601EB151BF4AFBA0008501D /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9601EB101BF4AFBA0008501D /* pop.mp3 */; };
+		9601EB161BF4AFBA0008501D /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9601EB111BF4AFBA0008501D /* win.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		9601EB011BF4AD480008501D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9601EB041BF4AD480008501D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9601EB061BF4AD480008501D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9601EB0D1BF4AFBA0008501D /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic.mp3; sourceTree = "<group>"; };
+		9601EB0E1BF4AFBA0008501D /* lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lose.mp3; sourceTree = "<group>"; };
+		9601EB0F1BF4AFBA0008501D /* mrreow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mrreow.mp3; sourceTree = "<group>"; };
+		9601EB101BF4AFBA0008501D /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
+		9601EB111BF4AFBA0008501D /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,11 +73,24 @@
 				9601EAFA1BF4AD480008501D /* GameScene.swift */,
 				9601EAFC1BF4AD480008501D /* GameViewController.swift */,
 				9601EAFE1BF4AD480008501D /* Main.storyboard */,
+				9601EB0C1BF4AFBA0008501D /* Sounds */,
 				9601EB011BF4AD480008501D /* Assets.xcassets */,
 				9601EB031BF4AD480008501D /* LaunchScreen.storyboard */,
 				9601EB061BF4AD480008501D /* Info.plist */,
 			);
 			path = CatNap;
+			sourceTree = "<group>";
+		};
+		9601EB0C1BF4AFBA0008501D /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				9601EB0D1BF4AFBA0008501D /* backgroundMusic.mp3 */,
+				9601EB0E1BF4AFBA0008501D /* lose.mp3 */,
+				9601EB0F1BF4AFBA0008501D /* mrreow.mp3 */,
+				9601EB101BF4AFBA0008501D /* pop.mp3 */,
+				9601EB111BF4AFBA0008501D /* win.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,10 +151,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9601EB161BF4AFBA0008501D /* win.mp3 in Resources */,
 				9601EAF91BF4AD480008501D /* GameScene.sks in Resources */,
 				9601EB051BF4AD480008501D /* LaunchScreen.storyboard in Resources */,
 				9601EB021BF4AD480008501D /* Assets.xcassets in Resources */,
+				9601EB121BF4AFBA0008501D /* backgroundMusic.mp3 in Resources */,
+				9601EB151BF4AFBA0008501D /* pop.mp3 in Resources */,
+				9601EB141BF4AFBA0008501D /* mrreow.mp3 in Resources */,
 				9601EB001BF4AD480008501D /* Main.storyboard in Resources */,
+				9601EB131BF4AFBA0008501D /* lose.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
