@@ -2,7 +2,10 @@
 
 Project:  Cat Nap
 
-Left off on page 173
+Left off on page 185
 
-Minor complaint from Xcode about the icons...
+Fixed minor complaint from Xcode about the icons...
+
+Finished completing the shared cat scene
+
 
