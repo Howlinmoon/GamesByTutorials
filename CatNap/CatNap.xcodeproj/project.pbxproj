@@ -20,6 +20,8 @@
 		9601EB141BF4AFBA0008501D /* mrreow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9601EB0F1BF4AFBA0008501D /* mrreow.mp3 */; };
 		9601EB151BF4AFBA0008501D /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9601EB101BF4AFBA0008501D /* pop.mp3 */; };
 		9601EB161BF4AFBA0008501D /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9601EB111BF4AFBA0008501D /* win.mp3 */; };
+		9697F68B1BF656DC00CCFE1E /* CatCurl.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9697F68A1BF656DC00CCFE1E /* CatCurl.sks */; };
+		9697F68D1BF657A500CCFE1E /* CatWakeUp.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9697F68C1BF657A500CCFE1E /* CatWakeUp.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		9601EB0F1BF4AFBA0008501D /* mrreow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mrreow.mp3; sourceTree = "<group>"; };
 		9601EB101BF4AFBA0008501D /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
 		9601EB111BF4AFBA0008501D /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win.mp3; sourceTree = "<group>"; };
+		9697F68A1BF656DC00CCFE1E /* CatCurl.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CatCurl.sks; sourceTree = "<group>"; };
+		9697F68C1BF657A500CCFE1E /* CatWakeUp.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CatWakeUp.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 			children = (
 				9601EAF81BF4AD480008501D /* GameScene.sks */,
 				9600F1831BF5081A00C6877D /* Cat.sks */,
+				9697F68A1BF656DC00CCFE1E /* CatCurl.sks */,
+				9697F68C1BF657A500CCFE1E /* CatWakeUp.sks */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -165,11 +171,13 @@
 				9600F1841BF5081A00C6877D /* Cat.sks in Resources */,
 				9601EB161BF4AFBA0008501D /* win.mp3 in Resources */,
 				9601EAF91BF4AD480008501D /* GameScene.sks in Resources */,
+				9697F68B1BF656DC00CCFE1E /* CatCurl.sks in Resources */,
 				9601EB051BF4AD480008501D /* LaunchScreen.storyboard in Resources */,
 				9601EB021BF4AD480008501D /* Assets.xcassets in Resources */,
 				9601EB121BF4AFBA0008501D /* backgroundMusic.mp3 in Resources */,
 				9601EB151BF4AFBA0008501D /* pop.mp3 in Resources */,
 				9601EB141BF4AFBA0008501D /* mrreow.mp3 in Resources */,
+				9697F68D1BF657A500CCFE1E /* CatWakeUp.sks in Resources */,
 				9601EB001BF4AD480008501D /* Main.storyboard in Resources */,
 				9601EB131BF4AFBA0008501D /* lose.mp3 in Resources */,
 			);

@@ -2,10 +2,7 @@
 
 Project:  Cat Nap
 
-Left off on page 185
+Left off on page 197
 
-Fixed minor complaint from Xcode about the icons...
-
-Finished completing the shared cat scene
-
+Finished up chapter 8 - done making a scene for now
 
