@@ -1,8 +1,8 @@
 # GamesByTutorials
 
-Project:  Cat Nap
+Project:  Side Trip into Physics
 
-Left off on page 197
+Left off on page 208
 
-Finished up chapter 8 - done making a scene for now
+Experimenting with Physics in the Playground
 
