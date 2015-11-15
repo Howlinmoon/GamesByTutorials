@@ -1,9 +1,9 @@
-let number = 0.4
-let string = "Sprite Kit is #\(5-4)"
-let numbers = Array(1...5)
+import UIKit
+import SpriteKit
+import XCPlayground
 
-var j = 0
-for i in 1..<10 {
-    j += i * 2
-}
-
+let sceneView = SKView(frame: CGRect(x: 0, y: 0, width: 480, height:320))
+let scene = SKScene(size: CGSize(width: 480, height: 320))
+sceneView.showsFPS = true
+sceneView.presentScene(scene)
+XCPShowView("My Scene", view: sceneView)
