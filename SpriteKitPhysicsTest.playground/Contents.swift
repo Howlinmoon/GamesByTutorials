@@ -74,6 +74,20 @@ l.physicsBody = SKPhysicsBody(texture: l.texture!, size: l.size)
 
 scene.addChild(l)
 
+func shake() {
+    print("starting shake")
+    scene.enumerateChildNodesWithName("sand") { node, _ in
+        node.physicsBody!.applyImpulse(CGVector(dx: 0, dy: random(min: 20, max: 40))
+            )
+    }
+    
+    scene.enumerateChildNodesWithName("shape") { node, _ in
+        node.physicsBody!.applyImpulse(
+            CGVector(dx: random(min:20, max:60),
+                dy: random(min:20, max:60))
+        ) }
+    
+}
 
 
 
@@ -88,8 +102,10 @@ delay(seconds: 2.0) {
         SKAction.repeatAction(
             SKAction.sequence([
                 SKAction.runBlock(spawnSand),
-                SKAction.waitForDuration(0.1)
+                SKAction.waitForDuration(0.1 )
                 ]),
-            count: 1000) )
+            count: 100) )
+    print("waiting 12 seconds...")
+    delay(seconds: 12, completion: shake)
 }
 
