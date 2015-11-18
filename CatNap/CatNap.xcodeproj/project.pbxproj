@@ -22,6 +22,8 @@
 		9601EB161BF4AFBA0008501D /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9601EB111BF4AFBA0008501D /* win.mp3 */; };
 		9697F68B1BF656DC00CCFE1E /* CatCurl.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9697F68A1BF656DC00CCFE1E /* CatCurl.sks */; };
 		9697F68D1BF657A500CCFE1E /* CatWakeUp.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9697F68C1BF657A500CCFE1E /* CatWakeUp.sks */; };
+		96C1C3331BFCEC5E00C67E63 /* BedNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1C3321BFCEC5E00C67E63 /* BedNode.swift */; };
+		96C1C3351BFCF00600C67E63 /* CatNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1C3341BFCF00600C67E63 /* CatNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		9601EB111BF4AFBA0008501D /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win.mp3; sourceTree = "<group>"; };
 		9697F68A1BF656DC00CCFE1E /* CatCurl.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CatCurl.sks; sourceTree = "<group>"; };
 		9697F68C1BF657A500CCFE1E /* CatWakeUp.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CatWakeUp.sks; sourceTree = "<group>"; };
+		96C1C3321BFCEC5E00C67E63 /* BedNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BedNode.swift; sourceTree = "<group>"; };
+		96C1C3341BFCF00600C67E63 /* CatNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,8 @@
 				96D302BD1BF5071B006183D3 /* Scenes */,
 				9601EAF61BF4AD480008501D /* AppDelegate.swift */,
 				9601EAFA1BF4AD480008501D /* GameScene.swift */,
+				96C1C3341BFCF00600C67E63 /* CatNode.swift */,
+				96C1C3321BFCEC5E00C67E63 /* BedNode.swift */,
 				9601EAFC1BF4AD480008501D /* GameViewController.swift */,
 				9601EAFE1BF4AD480008501D /* Main.storyboard */,
 				9601EB0C1BF4AFBA0008501D /* Sounds */,
@@ -191,6 +197,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9601EAFB1BF4AD480008501D /* GameScene.swift in Sources */,
+				96C1C3351BFCF00600C67E63 /* CatNode.swift in Sources */,
+				96C1C3331BFCEC5E00C67E63 /* BedNode.swift in Sources */,
 				9601EAFD1BF4AD480008501D /* GameViewController.swift in Sources */,
 				9601EAF71BF4AD480008501D /* AppDelegate.swift in Sources */,
 			);

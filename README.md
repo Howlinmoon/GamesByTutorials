@@ -2,7 +2,8 @@
 
 Project:  Cat Nap
 
-Left off on page 227
+Left off on page 232
 
-Back to the Game
+Starting to add code to the sprites created earlier
+B
 
