@@ -12,6 +12,10 @@ class BedNode: SKSpriteNode, CustomNodeEvents {
     
     func didMoveToScene() {
         print("bed added to scene")
+        let bedBodySize = CGSize(width: 40.0, height: 30.0)
+        physicsBody = SKPhysicsBody(rectangleOfSize: bedBodySize)
+        // indicate that the cat bed will never move
+        physicsBody!.dynamic = false
     }
     
 }

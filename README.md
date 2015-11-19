@@ -2,8 +2,6 @@
 
 Project:  Cat Nap
 
-Left off on page 232
+Left off on page 238
 
-Starting to add code to the sprites created earlier
-B
-
+Adding more physics bodies to the sprites
