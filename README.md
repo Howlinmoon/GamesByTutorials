@@ -2,6 +2,7 @@
 
 Project:  Cat Nap
 
-Left off on page 238
+Left off on page 243
 
-Adding more physics bodies to the sprites
+Collision Body and Mask programming
+

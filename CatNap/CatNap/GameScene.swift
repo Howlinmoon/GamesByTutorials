@@ -12,6 +12,13 @@ protocol CustomNodeEvents {
     func didMoveToScene()
 }
 
+struct PhysicsCategory {
+    static let None: UInt32 = 0
+    static let Cat: UInt32 = 0b1 //1
+    static let Block: UInt32 = 0b10 //2
+    static let Bed: UInt32 = 0b100 // 4
+}
+
 class GameScene: SKScene {
     
     var bedNode: BedNode!
@@ -45,6 +52,9 @@ class GameScene: SKScene {
         //    catNode.setScale(1.5)
         
         SKTAudio.sharedInstance().playBackgroundMusic("backgroundMusic.mp3")
+        
+        physicsBody!.categoryBitMask = PhysicsCategory.Bed
+        physicsBody!.collisionBitMask = PhysicsCategory.None
         
     }
     
