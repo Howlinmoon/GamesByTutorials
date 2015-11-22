@@ -14,6 +14,11 @@ class BlockNode: SKSpriteNode, CustomNodeEvents, InteractiveNode {
     
     func interact() {
         userInteractionEnabled = false
+        runAction(SKAction.sequence([
+            SKAction.playSoundFileNamed("pop.mp3", waitForCompletion: false),
+            SKAction.scaleTo(0.8, duration: 0.1),
+            SKAction.removeFromParent()
+            ]))
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
