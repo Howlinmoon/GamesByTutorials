@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GameKit
 
 class ViewController: UIViewController {
 
@@ -40,7 +41,7 @@ class ViewController: UIViewController {
             letterButtons.append(btn)
             btn.addTarget(self, action: "letterTapped:", forControlEvents: .TouchUpInside)
         }
-        
+        loadLevel()
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,5 +58,45 @@ class ViewController: UIViewController {
     }
     
     
+    func loadLevel() {
+        var clueString = ""
+        var solutionString = ""
+        var letterBits = [String]()
+        
+        if let levelFilePath = NSBundle.mainBundle().pathForResource("level\(level)", ofType: "txt") {
+        if let levelContents = try? String(contentsOfFile: levelFilePath, usedEncoding: nil) {
+            var lines = levelContents.componentsSeparatedByString("\n")
+            lines = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(lines) as! [String]
+            
+            for (index, line) in lines.enumerate() {
+                print("current line: \(line)")
+                let parts = line.componentsSeparatedByString(": ")
+                let answer = parts[0]
+                let clue = parts[1]
+                
+                clueString += "\(index + 1).\(clue)\n"
+                
+                let solutionWord = answer.stringByReplacingOccurrencesOfString("|", withString: "")
+                solutionString += "\(solutionWord.characters.count) letters\n"
+                solutions.append(solutionWord)
+                
+                let bits = answer.componentsSeparatedByString("|")
+                letterBits += bits
+            }
+        }
+    }
+    
+    cluesLabel.text = clueString.stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
+    answersLabel.text = solutionString.stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
+        
+    letterBits = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(letterBits) as! [String]
+    letterButtons = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(letterButtons) as! [UIButton]
+        
+    if letterBits.count == letterButtons.count {
+        for i in 0 ..< letterBits.count {
+            letterButtons[i].setTitle(letterBits[i], forState: .Normal)
+        }
+    }
+}
 }
 
