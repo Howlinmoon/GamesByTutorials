@@ -17,13 +17,15 @@ protocol InteractiveNode {
 }
 
 struct PhysicsCategory {
-    static let None: UInt32 = 0
-    static let Cat: UInt32 = 0b1 //1
+    static let None: UInt32  = 0
+    static let Cat: UInt32   = 0b1 //1
     static let Block: UInt32 = 0b10 //2
-    static let Bed: UInt32 = 0b100 // 4
+    static let Bed: UInt32   = 0b100 // 4
+    static let Edge: UInt32  = 0b1000 // 8
+    
 }
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var bedNode: BedNode!
     var catNode: CatNode!
@@ -41,6 +43,7 @@ class GameScene: SKScene {
         
         physicsBody = SKPhysicsBody(edgeLoopFromRect: playableRect)
         physicsWorld.contactDelegate = self
+        physicsBody!.categoryBitMask = PhysicsCategory.Edge
         physicsBody!.categoryBitMask = PhysicsCategory.Edge
         
         enumerateChildNodesWithName("//*", usingBlock: {node, _ in
@@ -60,6 +63,16 @@ class GameScene: SKScene {
         physicsBody!.categoryBitMask = PhysicsCategory.Bed
         physicsBody!.collisionBitMask = PhysicsCategory.None
         
+    }
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+        let collision = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        
+        if collision == PhysicsCategory.Cat | PhysicsCategory.Bed {
+            print("SUCCESS")
+        } else if collision == PhysicsCategory.Cat | PhysicsCategory.Edge {
+            print("FAIL")
+        }
     }
     
     
