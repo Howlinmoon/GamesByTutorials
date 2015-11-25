@@ -27,9 +27,12 @@ class ViewController: UIViewController {
     var activatedButtons = [UIButton]()
     var solutions = [String]()
     
-    var score = 0
     var level = 1
-    
+    var score: Int = 0 {
+        didSet {
+            scoreLabel.text = "Score: \(score)"
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -50,11 +53,39 @@ class ViewController: UIViewController {
     }
 
     @IBAction func submitTapped(sender: AnyObject) {
-    
+        if let solutionPosition = self.solutions.indexOf(self.currentAnswer.text!) {
+            self.activatedButtons.removeAll()
+            
+            var splitClues = self.answersLabel.text!.componentsSeparatedByString("\n")
+            splitClues[solutionPosition] = self.currentAnswer.text!
+            self.answersLabel.text = splitClues.joinWithSeparator("\n")
+            
+            self.currentAnswer.text = ""
+            ++self.score
+            
+            if self.score % 14 == 0 {
+                let actionController = UIAlertController(title: "Congratulations!", message: "You've completed both levels!", preferredStyle: UIAlertControllerStyle.Alert)
+                actionController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(actionController, animated: true, completion: nil)
+                self.level = 1
+                self.score = 0
+            }
+            else if self.score % 7 == 0 {
+                let actionController = UIAlertController(title: "Easy as pie, right!", message: "Are you ready for the next level?", preferredStyle: UIAlertControllerStyle.Alert)
+                actionController.addAction(UIAlertAction(title: "Let's go!!", style: UIAlertActionStyle.Default, handler: levelUp))
+                self.presentViewController(actionController, animated: true, completion: nil)
+            }
+        }
     }
 
     @IBAction func clearTapped(sender: AnyObject) {
-    
+        currentAnswer.text = ""
+        
+        for btn in activatedButtons {
+            btn.hidden = false
+        }
+        
+        activatedButtons.removeAll()
     }
     
     
@@ -98,5 +129,23 @@ class ViewController: UIViewController {
         }
     }
 }
+    func letterTapped(btn: UIButton) {
+        currentAnswer.text = currentAnswer.text! + btn.titleLabel!.text!
+        activatedButtons.append(btn)
+        btn.hidden = true
+    }
+    
+    
+    func levelUp(action: UIAlertAction!) {
+        ++level
+        solutions.removeAll(keepCapacity: true)
+        
+        loadLevel()
+        
+        for btn in letterButtons {
+            btn.hidden = false
+        }
+    }
+    
 }
 

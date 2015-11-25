@@ -3,8 +3,8 @@
 Starting the Tutorial Series - Hacking With Swift
 
 Continue here:
-https://www.hackingwithswift.com/read/8/3/loading-a-level-addtarget-and-shuffling-arrays
+https://www.hackingwithswift.com/read/9/1/setting-up
 
-Project 8
+Project 9
 
 
