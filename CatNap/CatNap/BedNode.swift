@@ -16,6 +16,9 @@ class BedNode: SKSpriteNode, CustomNodeEvents {
         physicsBody = SKPhysicsBody(rectangleOfSize: bedBodySize)
         // indicate that the cat bed will never move
         physicsBody!.dynamic = false
+        physicsBody!.categoryBitMask = PhysicsCategory.Bed
+        physicsBody!.collisionBitMask = PhysicsCategory.None
+
     }
     
 }

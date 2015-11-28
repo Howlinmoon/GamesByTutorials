@@ -22,7 +22,7 @@ struct PhysicsCategory {
     static let Block: UInt32 = 0b10 //2
     static let Bed: UInt32   = 0b100 // 4
     static let Edge: UInt32  = 0b1000 // 8
-    
+    static let Label: UInt32 = 0b10000 // 16
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -44,7 +44,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsBody = SKPhysicsBody(edgeLoopFromRect: playableRect)
         physicsWorld.contactDelegate = self
         physicsBody!.categoryBitMask = PhysicsCategory.Edge
-        physicsBody!.categoryBitMask = PhysicsCategory.Edge
         
         enumerateChildNodesWithName("//*", usingBlock: {node, _ in
             if let customNode = node as? CustomNodeEvents {
@@ -60,8 +59,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         SKTAudio.sharedInstance().playBackgroundMusic("backgroundMusic.mp3")
         
-        physicsBody!.categoryBitMask = PhysicsCategory.Bed
-        physicsBody!.collisionBitMask = PhysicsCategory.None
         
     }
     
