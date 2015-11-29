@@ -69,8 +69,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("SUCCESS")
         } else if collision == PhysicsCategory.Cat | PhysicsCategory.Edge {
             print("FAIL")
+            lose()
         }
     }
     
+    func inGameMessage(text: String) {
+        let message = MessageNode(message: text)
+        message.position = CGPoint(x: CGRectGetMidX(frame), y: CGRectGetMidY(frame))
+        addChild(message)
+    }
+    
+    func newGame() {
+        let scene = GameScene(fileNamed: "GameScene")
+        scene!.scaleMode = scaleMode
+        view!.presentScene(scene)
+    }
+    
+    func lose() {
+        // 1
+        SKTAudio.sharedInstance().pauseBackgroundMusic()
+        runAction(SKAction.playSoundFileNamed("lose.mp3", waitForCompletion: false))
+        
+        // 2
+        inGameMessage("Try Again...")
+        
+        // 3
+        performSelector("newGame", withObject: nil, afterDelay: 5)
+    }
     
 }
